@@ -1,0 +1,29 @@
+﻿<Window x:Class="VetApp.Views.MainMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VetApp.Views"
+        mc:Ignorable="d"
+        Title="Main Menu" Height="450" Width="800" Background="LightSkyBlue">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Vet App" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" Foreground="White" FontWeight="Bold"/>
+        <Button Grid.Row="1" Grid.Column="1" x:Name="Clients" Content="Clients" Margin="5"/>
+        <Button Grid.Row="1" Grid.Column="2" x:Name="Stocks" Content="Stocks" Margin="5" Click="Stocks_Click"/>
+        <Button Grid.Row="1" Grid.Column="3" x:Name="Employees" Content="Employees" Margin="5" Click="Employees_Click"/>
+        <Button Grid.Row="1" Grid.Column="4" x:Name="Profile" Content="My profile" Margin="5" Click="Profile_Click"/>
+    </Grid>
+</Window>
