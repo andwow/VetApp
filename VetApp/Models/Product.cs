@@ -8,6 +8,16 @@ namespace VetApp.Models
 {
     public class Product : ModelBase
     {
+        public Product() { }
+        public Product(Product product)
+        {
+            Id = product.Id;
+            ProductCode = product.ProductCode;
+            Name = product.Name;
+            Type = product.Type;
+            Price = product.Price;
+            Quantity = product.Quantity;
+        }
         public int Id 
         {
             get

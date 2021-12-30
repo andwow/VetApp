@@ -1,0 +1,41 @@
+﻿<Window x:Class="VetApp.Views.ProductScreen"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:VetApp.Views"
+      Height="250" Width="400"
+      Title="Product" Background="LightSkyBlue">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="Product code:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="Name:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="Type:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="4" Grid.Column="1" Text="Price:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="5" Grid.Column="1" Text="Quantity: " VerticalAlignment="Center"/>
+
+        <TextBox Grid.Row="1" Grid.Column="2" x:Name="ProdCode" Grid.ColumnSpan="2" Text="{Binding CurrentProduct.ProductCode}" Margin="5"/>
+        <TextBox Grid.Row="2" Grid.Column="2" x:Name="Name" Grid.ColumnSpan="2" Text="{Binding CurrentProduct.Name}" Margin="5"/>
+        <TextBox Grid.Row="3" Grid.Column="2" x:Name="Type" Grid.ColumnSpan="2" Text="{Binding CurrentProduct.Type}" Margin="5"/>
+        <TextBox Grid.Row="4" Grid.Column="2" x:Name="Price" Grid.ColumnSpan="2" Text="{Binding CurrentProduct.Price}" Margin="5"/>
+        <TextBox Grid.Row="5" Grid.Column="2" x:Name="Quantity" Grid.ColumnSpan="2" Text="{Binding CurrentProduct.Quantity}" Margin="5"/>
+        <Button Grid.Row="6" Grid.Column="2" x:Name="DeleteProduct" Content="Delete product" Margin="5" Background="Red" Foreground="White" Click="DeleteProduct_Click"/>
+        <Button Grid.Row="6" Grid.Column="3" x:Name="ModifyProduct" Content="Modify product" Margin="5" Click="ModifyProduct_Click"/>
+    </Grid>
+</Window>

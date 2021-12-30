@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VetApp.Views"
         mc:Ignorable="d"
-        Title="Create Product" Height="450" Width="400" Background="LightSkyBlue">
+        Title="Create Product" Height="250" Width="400" Background="LightSkyBlue">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using VetApp.Models;
 using VetApp.ViewModels;
 
 namespace VetApp.Views
@@ -34,7 +35,27 @@ namespace VetApp.Views
         }
         private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            try
+            {
+                if (sender != null)
+                {
+                    DataGrid grid = sender as DataGrid;
+                    if (grid != null && grid.SelectedItems != null && grid.SelectedItems.Count == 1)
+                    {
+                        //This is the code which helps to show the data when the row is double clicked.
+                        DataGridRow dgr = grid.ItemContainerGenerator.ContainerFromItem(grid.SelectedItem) as DataGridRow;
+                        Product dr = (Product)dgr.Item;
+                        ProductScreen product = new ProductScreen(viewModel.Products, dr);
+                        product.Show();
+                    }
 
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
         StocksVM viewModel;
     }
