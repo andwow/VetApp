@@ -17,18 +17,16 @@ using VetApp.ViewModels;
 namespace VetApp.Views
 {
     /// <summary>
-    /// Interaction logic for Employees.xaml
+    /// Interaction logic for Clients.xaml
     /// </summary>
-    public partial class Employees : Window
+    public partial class Clients : Window
     {
-        public Employees()
+        public Clients()
         {
-            viewModel = new EmployeesVM();
+            viewModel = new ClientsVM();
             DataContext = viewModel;
             InitializeComponent();
         }
-        EmployeesVM viewModel;
-
         private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             try
@@ -41,9 +39,8 @@ namespace VetApp.Views
                         //This is the code which helps to show the data when the row is double clicked.
                         DataGridRow dgr = grid.ItemContainerGenerator.ContainerFromItem(grid.SelectedItem) as DataGridRow;
                         User dr = (User)dgr.Item;
-                        Profile profile = new Profile(viewModel.Employees, dr);
+                        ClientProfile profile = new ClientProfile(viewModel.Clients, dr);
                         profile.Show();
-                        
                     }
 
                 }
@@ -57,10 +54,12 @@ namespace VetApp.Views
 
         private void CreateUser_Click(object sender, RoutedEventArgs e)
         {
-            const bool isVet = true;
-            CreateUser createUser = new CreateUser(viewModel.Employees, isVet);
+            const bool isVet = false;
+            CreateUser createUser = new CreateUser(viewModel.Clients, isVet);
             createUser.Show();
         }
+
+        private ClientsVM viewModel;
 
         private void Refresh_Click(object sender, RoutedEventArgs e)
         {

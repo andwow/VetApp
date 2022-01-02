@@ -51,6 +51,11 @@ namespace VetApp
                     MainMenu mainMenu = new MainMenu(user);
                     mainMenu.Show();
                 }
+                else
+                {
+                    ClientProfile clientProfile = new ClientProfile(user);
+                    clientProfile.Show();
+                }
                 this.Close();
             }
             else

@@ -27,3 +27,7 @@ D:\VetApp\VetApp\VetApp\obj\Debug\Views\CreateProduct.g.cs
 D:\VetApp\VetApp\VetApp\obj\Debug\Views\CreateProduct.baml
 D:\VetApp\VetApp\VetApp\obj\Debug\Views\ProductScreen.g.cs
 D:\VetApp\VetApp\VetApp\obj\Debug\Views\ProductScreen.baml
+D:\VetApp\VetApp\VetApp\obj\Debug\Views\Clients.g.cs
+D:\VetApp\VetApp\VetApp\obj\Debug\Views\Clients.baml
+D:\VetApp\VetApp\VetApp\obj\Debug\Views\ClientProfile.g.cs
+D:\VetApp\VetApp\VetApp\obj\Debug\Views\ClientProfile.baml

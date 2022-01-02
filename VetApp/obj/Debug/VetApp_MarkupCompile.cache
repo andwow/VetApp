@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\VetApp\VetApp\VetApp\App.xaml
-8-406067258
+10-1714156806
 
-20-889398703
+24-1709919351
 14-1290796308
-MainWindow.xaml;Views\CreateProduct.xaml;Views\CreateUser.xaml;Views\Employees.xaml;Views\MainMenu.xaml;Views\ProductScreen.xaml;Views\Profile.xaml;Views\Stocks.xaml;
+MainWindow.xaml;Views\ClientProfile.xaml;Views\Clients.xaml;Views\CreateProduct.xaml;Views\CreateUser.xaml;Views\Employees.xaml;Views\MainMenu.xaml;Views\ProductScreen.xaml;Views\Profile.xaml;Views\Stocks.xaml;
 
 False
 

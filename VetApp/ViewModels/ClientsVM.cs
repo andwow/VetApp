@@ -10,13 +10,13 @@ using VetApp.Models;
 
 namespace VetApp.ViewModels
 {
-    internal class EmployeesVM
+    class ClientsVM
     {
-        public EmployeesVM()
+        public ClientsVM()
         {
-            Employees = new ObservableCollection<User>();
+            Clients = new ObservableCollection<User>();
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-I78MCPL;Initial Catalog=VetApp;Integrated Security=True");
-            SqlCommand cmd = new SqlCommand("select * from [User] where is_vet = 1", con);
+            SqlCommand cmd = new SqlCommand("select * from [User] where is_vet = 0", con);
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             sda.Fill(dt);
@@ -41,17 +41,18 @@ namespace VetApp.ViewModels
                     user.District = (string)dt.Rows[i]["district"];
                     user.City = (string)dt.Rows[i]["city"];
                     user.Address = (string)dt.Rows[i]["address"];
-                    Employees.Add(user);
+                    Clients.Add(user);
                 }
 
             }
             con.Close();
         }
+
         public void Refresh()
         {
-            Employees.Clear();
+            Clients.Clear();
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-I78MCPL;Initial Catalog=VetApp;Integrated Security=True");
-            SqlCommand cmd = new SqlCommand("select * from [User] where is_vet = 1", con);
+            SqlCommand cmd = new SqlCommand("select * from [User] where is_vet = 0", con);
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             sda.Fill(dt);
@@ -76,12 +77,13 @@ namespace VetApp.ViewModels
                     user.District = (string)dt.Rows[i]["district"];
                     user.City = (string)dt.Rows[i]["city"];
                     user.Address = (string)dt.Rows[i]["address"];
-                    Employees.Add(user);
+                    Clients.Add(user);
                 }
 
             }
             con.Close();
         }
-        public ObservableCollection<User> Employees { get; }
+
+        public ObservableCollection<User> Clients { get; }
     }
 }

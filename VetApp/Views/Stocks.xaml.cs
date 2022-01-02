@@ -58,5 +58,10 @@ namespace VetApp.Views
             }
         }
         StocksVM viewModel;
+
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.Refresh();
+        }
     }
 }

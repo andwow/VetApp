@@ -15,9 +15,10 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
         <TextBlock Text="Double-click on an eployee to see his profile." VerticalAlignment="Bottom"/>
-        <DataGrid Grid.Row="1" ItemsSource="{Binding Employees}" IsReadOnly="True" MouseDoubleClick="DataGrid_MouseDoubleClick" AutoGenerateColumns="False" Grid.ColumnSpan="2">
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Employees}" IsReadOnly="True" MouseDoubleClick="DataGrid_MouseDoubleClick" AutoGenerateColumns="False" Grid.ColumnSpan="3">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
                 <DataGridTextColumn Header="First name" Binding="{Binding FirstName}" />
@@ -30,6 +31,7 @@
                 <DataGridTextColumn Header="Address" Binding="{Binding Address}" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button Grid.Row="2" Grid.Column="1" x:Name="CreateUser" Content="Add user" Margin="5" Click="CreateUser_Click"/>
+        <Button Grid.Row="2" Grid.Column="1" x:Name="Refresh" Content="Refresh" Margin="5" Click="Refresh_Click"/>
+        <Button Grid.Row="2" Grid.Column="2" x:Name="CreateUser" Content="Add user" Margin="5" Click="CreateUser_Click"/>
     </Grid>
 </Window>

@@ -1,40 +1,49 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 using VetApp.Models;
 using VetApp.ViewModels;
 
 namespace VetApp.Views
 {
     /// <summary>
-    /// Interaction logic for Profile.xaml
+    /// Interaction logic for ClientProfile.xaml
     /// </summary>
-    public partial class Profile : Window
+    public partial class ClientProfile : Window
     {
-        public Profile(User user)
+        public ClientProfile(User user)
         {
             User userCopy = new User(user);
-            viewModel = new ProfileVM(userCopy);
+            viewModel = new ClientProfileVM(userCopy);
             DataContext = viewModel;
             InitializeComponent();
         }
 
-        public Profile(ObservableCollection<User> userList, User user)
+        public ClientProfile(ObservableCollection<User> userList, User user)
         {
             this.user = user;
             this.userList = userList;
             User userCopy = new User(user);
-            viewModel = new ProfileVM(userCopy);
+            viewModel = new ClientProfileVM(userCopy);
             DataContext = viewModel;
             InitializeComponent();
         }
 
-        ProfileVM viewModel;
-
         private void ResetPassword_Click(object sender, RoutedEventArgs e)
         {
-            if(NewPassword.Password != "" && ConfirmPass.Password != "" &&
+            if (NewPassword.Password != "" && ConfirmPass.Password != "" &&
                NewPassword.Password == ConfirmPass.Password)
             {
                 try
@@ -103,7 +112,7 @@ namespace VetApp.Views
         {
             MessageBoxResult dialogResult = System.Windows.MessageBox.Show("Are you sure?", "Delete Confirmation", MessageBoxButton.YesNo);
 
-            if (dialogResult == MessageBoxResult.Yes) 
+            if (dialogResult == MessageBoxResult.Yes)
             {
                 try
                 {
@@ -120,16 +129,15 @@ namespace VetApp.Views
                         userList.Remove(user);
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show("Not deleted:" + ex.Message);
                 }
             }
-
         }
 
+        ClientProfileVM viewModel;
         User user;
         ObservableCollection<User> userList;
     }
 }
-

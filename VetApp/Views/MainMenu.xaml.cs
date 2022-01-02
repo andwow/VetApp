@@ -47,5 +47,11 @@ namespace VetApp.Views
             Stocks stocks = new Stocks();
             stocks.Show();
         }
+
+        private void Clients_Click(object sender, RoutedEventArgs e)
+        {
+            Clients clients = new Clients();
+            clients.Show();
+        }
     }
 }
