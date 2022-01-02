@@ -30,6 +30,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="100"/>
@@ -37,45 +38,46 @@
             <ColumnDefinition Width="50"/>
         </Grid.ColumnDefinitions>
 
-        <DataGrid Grid.Row="1" Grid.RowSpan="15" Grid.Column="1" AutoGenerateColumns="False">
+        <DataGrid Grid.Row="1" Grid.RowSpan="15" Grid.Column="1" Grid.ColumnSpan="2" ItemsSource="{Binding Pets}" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID"/>
-                <DataGridTextColumn Header="Personal code"/>
-                <DataGridTextColumn Header="Name"/>
-                <DataGridTextColumn Header="Species"/>
-                <DataGridTextColumn Header="Breed"/>
-                <DataGridTextColumn Header="Color"/>
-                <DataGridTextColumn Header="Marks"/>
-                <DataGridTextColumn Header="Gender"/>
-                <DataGridTextColumn Header="Birthday"/>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Personal code" Binding="{Binding PersonalCode}"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Species" Binding="{Binding Species}"/>
+                <DataGridTextColumn Header="Breed" Binding="{Binding Breed}"/>
+                <DataGridTextColumn Header="Color" Binding="{Binding Color}"/>
+                <DataGridTextColumn Header="Marks" Binding="{Binding Marks}"/>
+                <DataGridTextColumn Header="Gender" Binding="{Binding Gender}"/>
+                <DataGridTextColumn Header="Birthday" Binding="{Binding BirthdayString}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button Grid.Row="16" Grid.Column="2" x:Name="CreatePet" Content="Add pet" Margin="5" Click="CreatePet_Click"/>
 
-        <TextBlock Grid.Row="1" Grid.Column="3" Text="CNP:" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="2" Grid.Column="3" Text="First name:" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="3" Grid.Column="3" Text="Last name:" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="4" Grid.Column="3" Text="E-mail:" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="5" Grid.Column="3" Text="Phone number: " VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="6" Grid.Column="3" Text="Country:" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="7" Grid.Column="3" Text="State:" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="8" Grid.Column="3" Text="City:" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="9" Grid.Column="3" Text="Address:" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="13" Grid.Column="3" Text="New password: " VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="14" Grid.Column="3" Text="Confirm password: " VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="1" Grid.Column="4" Text="CNP:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="2" Grid.Column="4" Text="First name:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="3" Grid.Column="4" Text="Last name:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="4" Grid.Column="4" Text="E-mail:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="5" Grid.Column="4" Text="Phone number: " VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="6" Grid.Column="4" Text="Country:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="7" Grid.Column="4" Text="State:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="8" Grid.Column="4" Text="City:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="9" Grid.Column="4" Text="Address:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="13" Grid.Column="4" Text="New password: " VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="14" Grid.Column="4" Text="Confirm password: " VerticalAlignment="Center"/>
 
-        <TextBox Grid.Row="1" Grid.Column="4" x:Name="Cnp" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentUser.Cnp}"/>
-        <TextBox Grid.Row="2" Grid.Column="4" x:Name="FirstName" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentUser.FirstName}"/>
-        <TextBox Grid.Row="3" Grid.Column="4" x:Name="LastName" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentUser.LastName}"/>
-        <TextBox Grid.Row="4" Grid.Column="4" x:Name="Email" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentUser.Email}"/>
-        <TextBox Grid.Row="5" Grid.Column="4" x:Name="Phone" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentUser.Phone}"/>
-        <TextBox Grid.Row="6" Grid.Column="4" x:Name="Country" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentUser.Country}"/>
-        <TextBox Grid.Row="7" Grid.Column="4" x:Name="State" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentUser.District}"/>
-        <TextBox Grid.Row="8" Grid.Column="4" x:Name="City" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentUser.City}"/>
-        <TextBox Grid.Row="9" Grid.Column="4" x:Name="Address" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentUser.Address}"/>
-        <Button Grid.Row="10" Grid.Column="5" x:Name="Modify" Content="Modify" Margin="5" Click="Modify_Click"/>
-        <PasswordBox Grid.Row="13" Grid.Column="4" x:Name="NewPassword" Grid.ColumnSpan="2" Margin="5"/>
-        <PasswordBox Grid.Row="14" Grid.Column="4" x:Name="ConfirmPass" Grid.ColumnSpan="2" Margin="5"/>
-        <Button Grid.Row="15" Grid.Column="5" x:Name="ResetPassword" Content="Reset Password" Margin="5" Click="ResetPassword_Click"/>
-        <Button Grid.Row="17" Grid.Column="5" x:Name="Delete" Background="Red" Foreground="White" Content="Delete account" Margin="5" Click="Delete_Click"/>
+        <TextBox Grid.Row="1" Grid.Column="5" x:Name="Cnp" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentUser.Cnp}"/>
+        <TextBox Grid.Row="2" Grid.Column="5" x:Name="FirstName" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentUser.FirstName}"/>
+        <TextBox Grid.Row="3" Grid.Column="5" x:Name="LastName" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentUser.LastName}"/>
+        <TextBox Grid.Row="4" Grid.Column="5" x:Name="Email" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentUser.Email}"/>
+        <TextBox Grid.Row="5" Grid.Column="5" x:Name="Phone" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentUser.Phone}"/>
+        <TextBox Grid.Row="6" Grid.Column="5" x:Name="Country" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentUser.Country}"/>
+        <TextBox Grid.Row="7" Grid.Column="5" x:Name="State" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentUser.District}"/>
+        <TextBox Grid.Row="8" Grid.Column="5" x:Name="City" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentUser.City}"/>
+        <TextBox Grid.Row="9" Grid.Column="5" x:Name="Address" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentUser.Address}"/>
+        <Button Grid.Row="10" Grid.Column="6" x:Name="Modify" Content="Modify" Margin="5" Click="Modify_Click"/>
+        <PasswordBox Grid.Row="13" Grid.Column="5" x:Name="NewPassword" Grid.ColumnSpan="2" Margin="5"/>
+        <PasswordBox Grid.Row="14" Grid.Column="5" x:Name="ConfirmPass" Grid.ColumnSpan="2" Margin="5"/>
+        <Button Grid.Row="15" Grid.Column="6" x:Name="ResetPassword" Content="Reset Password" Margin="5" Click="ResetPassword_Click"/>
+        <Button Grid.Row="17" Grid.Column="6" x:Name="Delete" Background="Red" Foreground="White" Content="Delete account" Margin="5" Click="Delete_Click"/>
     </Grid>
 </Window>

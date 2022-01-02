@@ -31,3 +31,5 @@ D:\VetApp\VetApp\VetApp\obj\Debug\Views\Clients.g.cs
 D:\VetApp\VetApp\VetApp\obj\Debug\Views\Clients.baml
 D:\VetApp\VetApp\VetApp\obj\Debug\Views\ClientProfile.g.cs
 D:\VetApp\VetApp\VetApp\obj\Debug\Views\ClientProfile.baml
+D:\VetApp\VetApp\VetApp\obj\Debug\Views\CreatePet.g.cs
+D:\VetApp\VetApp\VetApp\obj\Debug\Views\CreatePet.baml

@@ -135,6 +135,11 @@ namespace VetApp.Views
                 }
             }
         }
+        private void CreatePet_Click(object sender, RoutedEventArgs e)
+        {
+            CreatePet createPet = new CreatePet(viewModel.Pets, user);
+            createPet.Show();
+        }
 
         ClientProfileVM viewModel;
         User user;
