@@ -8,6 +8,22 @@ namespace VetApp.Models
 {
     public class Pet : ModelBase
     {
+        public Pet()
+        {
+
+        }
+        public Pet(Pet pet)
+        {
+            Id = pet.id;
+            PersonalCode = pet.PersonalCode;
+            Name = pet.Name;
+            Birthday = pet.Birthday;
+            Gender = pet.Gender;
+            Species = pet.Species;
+            Breed = pet.Breed;
+            Color = pet.Color;
+            Marks = pet.Marks;
+        }
         public int Id
         {
             get
@@ -120,7 +136,12 @@ namespace VetApp.Models
         {
             get
             {
-                return birthday.Date.ToString("yyyy-MM-dd");
+                return birthday.Date.ToString(@"dd.MM.yyyy");
+            }
+            set
+            {
+                birthday = DateTime.Parse(value + " 12:00:00");
+                NotifyPropertyChanged(nameof(Birthday));
             }
         }
         private int id;

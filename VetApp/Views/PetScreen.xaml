@@ -1,0 +1,65 @@
+﻿<Window x:Class="VetApp.Views.PetScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VetApp.Views"
+        mc:Ignorable="d"
+        Title="PetScreen" Height="450" Width="800" Background="LightSkyBlue">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="50"/>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid Grid.Row="1" Grid.RowSpan="8" Grid.Column="1" Grid.ColumnSpan="2" ItemsSource="{Binding Interventions}" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Type" Binding="{Binding Type}"/>
+                <DataGridTextColumn Header="Date" Binding="{Binding DateString}"/>
+                <DataGridTextColumn Header="Next date" Binding="{Binding NextDateString}"/>
+                <DataGridTextColumn Header="Price" Binding="{Binding Price}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Grid.Row="9" Grid.Column="2" x:Name="CreatePet" Content="Add pet" Margin="5"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="4" Text="Personal code:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="2" Grid.Column="4" Text="Name:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="3" Grid.Column="4" Text="Birthday:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="4" Grid.Column="4" Text="Gender:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="5" Grid.Column="4" Text="Species: " VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="6" Grid.Column="4" Text="Breed:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="7" Grid.Column="4" Text="Color:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="8" Grid.Column="4" Text="Marks:" VerticalAlignment="Center"/>
+
+        <TextBox Grid.Row="1" Grid.Column="5" x:Name="PersonalCode" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.PersonalCode}"/>
+        <TextBox Grid.Row="2" Grid.Column="5" x:Name="Name" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.Name}"/>
+        <TextBox Grid.Row="3" Grid.Column="5" x:Name="Birthday" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.BirthdayString}"/>
+        <TextBox Grid.Row="4" Grid.Column="5" x:Name="Gender" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.Gender}"/>
+        <TextBox Grid.Row="5" Grid.Column="5" x:Name="Species" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.Species}"/>
+        <TextBox Grid.Row="6" Grid.Column="5" x:Name="Breed" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.Breed}"/>
+        <TextBox Grid.Row="7" Grid.Column="5" x:Name="Color" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.Color}"/>
+        <TextBox Grid.Row="8" Grid.Column="5" x:Name="Marks" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.Marks}"/>
+        <Button Grid.Row="9" Grid.Column="6" x:Name="Modify" Content="Modify" Margin="5" Click="Modify_Click"/>
+    </Grid>
+</Window>

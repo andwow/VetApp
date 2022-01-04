@@ -108,37 +108,62 @@ namespace VetApp.Views
             }
         }
 
-        private void Delete_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBoxResult dialogResult = System.Windows.MessageBox.Show("Are you sure?", "Delete Confirmation", MessageBoxButton.YesNo);
+        //private void Delete_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MessageBoxResult dialogResult = System.Windows.MessageBox.Show("Are you sure?", "Delete Confirmation", MessageBoxButton.YesNo);
 
-            if (dialogResult == MessageBoxResult.Yes)
-            {
-                try
-                {
-                    SqlConnection con = new SqlConnection("Data Source=DESKTOP-I78MCPL;Initial Catalog=VetApp;Integrated Security=True");
-                    SqlCommand cmd = new SqlCommand("Delete from [User] where user_id = @UserId;", con);
-                    cmd.Parameters.AddWithValue("@UserId", viewModel.CurrentUser.Id);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                    con.Close();
-                    MessageBox.Show("Profile deleted!");
-                    this.Close();
-                    if (userList != null)
-                    {
-                        userList.Remove(user);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Not deleted:" + ex.Message);
-                }
-            }
-        }
+        //    if (dialogResult == MessageBoxResult.Yes)
+        //    {
+        //        try
+        //        {
+        //            SqlConnection con = new SqlConnection("Data Source=DESKTOP-I78MCPL;Initial Catalog=VetApp;Integrated Security=True");
+        //            SqlCommand cmd = new SqlCommand("Delete from [User] where user_id = @UserId;", con);
+        //            cmd.Parameters.AddWithValue("@UserId", viewModel.CurrentUser.Id);
+        //            con.Open();
+        //            cmd.ExecuteNonQuery();
+        //            con.Close();
+        //            MessageBox.Show("Profile deleted!");
+        //            this.Close();
+        //            if (userList != null)
+        //            {
+        //                userList.Remove(user);
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show("Not deleted:" + ex.Message);
+        //        }
+        //    }
+        //}
         private void CreatePet_Click(object sender, RoutedEventArgs e)
         {
             CreatePet createPet = new CreatePet(viewModel.Pets, user);
             createPet.Show();
+        }
+
+        private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                if (sender != null)
+                {
+                    DataGrid grid = sender as DataGrid;
+                    if (grid != null && grid.SelectedItems != null && grid.SelectedItems.Count == 1)
+                    {
+                        //This is the code which helps to show the data when the row is double clicked.
+                        DataGridRow dgr = grid.ItemContainerGenerator.ContainerFromItem(grid.SelectedItem) as DataGridRow;
+                        Pet dr = (Pet)dgr.Item;
+                        PetScreen profile = new PetScreen(dr);
+                        profile.Show();
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
 
         ClientProfileVM viewModel;
