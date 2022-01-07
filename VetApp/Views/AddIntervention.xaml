@@ -1,0 +1,80 @@
+﻿<Window x:Class="VetApp.Views.AddIntervention"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VetApp.Views"
+        mc:Ignorable="d"
+        Title="AddVaccine" Height="600" Width="450" Background="LightSkyBlue">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="Intervention name: " VerticalAlignment="Center"/>
+        <TextBox Grid.Row="1" Grid.Column="2" x:Name="IntvName" Margin="5" Text="{Binding CurrentIntervention.Name}"/>
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="Intervention date: " VerticalAlignment="Center"/>
+        <TextBox Grid.Row="2" Grid.Column="2" x:Name="IntvDate" Margin="5" Text="{Binding CurrentIntervention.DateString}"/>
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="Intervention next date: " VerticalAlignment="Center">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Visible}" Value="False">
+                            <Setter Property="Visibility" Value="Hidden"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <TextBox Grid.Row="3" Grid.Column="2" x:Name="IntvNextDate" Margin="5" Text="{Binding CurrentIntervention.NextDateString}">
+            <TextBox.Style>
+                <Style TargetType="{x:Type TextBox}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Visible}" Value="False">
+                            <Setter Property="Visibility" Value="Hidden"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        <TextBlock Grid.Row="4" Grid.Column="1" Text="Double-click on a product to add it to cart." VerticalAlignment="Bottom"/>
+        <DataGrid x:Name="AvailableProducts" Grid.Row="5" Grid.Column="1" ItemsSource="{Binding AvailableProducts}" IsReadOnly="True" MouseDoubleClick="AvailableProducts_MouseDoubleClick" AutoGenerateColumns="False" Grid.ColumnSpan="3">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
+                <DataGridTextColumn Header="Product code" Binding="{Binding ProductCode}" />
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                <DataGridTextColumn Header="Type" Binding="{Binding Type}" />
+                <DataGridTextColumn Header="Price" Binding="{Binding Price}" />
+                <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" Text="Double-click on a product to remove it from cart." VerticalAlignment="Bottom"/>
+        <DataGrid x:Name="UsedProducts" Grid.Row="7" Grid.Column="1" ItemsSource="{Binding UsedProducts}" CurrentCellChanged="UsedProducts_CurrentCellChanged" MouseDoubleClick="UsedProducts_MouseDoubleClick" AutoGenerateColumns="False" Grid.ColumnSpan="3">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" />
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Product code" Binding="{Binding ProductCode}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Type" Binding="{Binding Type}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Price" Binding="{Binding Price}" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock Text="Price:" Grid.Row="8" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <TextBox x:Name="Price" Grid.Row="8" Grid.Column="2" Margin="5" IsReadOnly="True"/>
+        <Button Grid.Row="9" Grid.Column="2" x:Name="CreateProduct" Content="Add intervention" Margin="5"/>
+    </Grid>
+</Window>

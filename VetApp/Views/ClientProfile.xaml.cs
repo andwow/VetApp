@@ -23,18 +23,20 @@ namespace VetApp.Views
     /// </summary>
     public partial class ClientProfile : Window
     {
-        public ClientProfile(User user)
+        public ClientProfile(User user, bool canModify)
         {
+            this.canModify = canModify;
             User userCopy = new User(user);
             viewModel = new ClientProfileVM(userCopy);
             DataContext = viewModel;
             InitializeComponent();
         }
 
-        public ClientProfile(ObservableCollection<User> userList, User user)
+        public ClientProfile(ObservableCollection<User> userList, User user, bool canModify)
         {
-            this.user = user;
+            //this.user = user;
             this.userList = userList;
+            this.canModify = canModify;
             User userCopy = new User(user);
             viewModel = new ClientProfileVM(userCopy);
             DataContext = viewModel;
@@ -71,40 +73,47 @@ namespace VetApp.Views
 
         private void Modify_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (canModify == true)
             {
-                SqlConnection con = new SqlConnection("Data Source=DESKTOP-I78MCPL;Initial Catalog=VetApp;Integrated Security=True");
-                SqlCommand cmd = new SqlCommand(
-                    "Update [User] set " +
-                    "cnp = @Cnp, " +
-                    "first_name = @FirstName, " +
-                    "last_name = @LastName, " +
-                    "email = @Email, " +
-                    "phone_no = @Phone, " +
-                    "country = @Country, " +
-                    "district = @State, " +
-                    "city = @City, " +
-                    "address = @Address " +
-                    "where user_id = @UserId;", con);
-                cmd.Parameters.AddWithValue("@Cnp", Cnp.Text);
-                cmd.Parameters.AddWithValue("@FirstName", FirstName.Text);
-                cmd.Parameters.AddWithValue("@LastName", LastName.Text);
-                cmd.Parameters.AddWithValue("@Email", Email.Text);
-                cmd.Parameters.AddWithValue("@Phone", Phone.Text);
-                cmd.Parameters.AddWithValue("@Country", Country.Text);
-                cmd.Parameters.AddWithValue("@State", State.Text);
-                cmd.Parameters.AddWithValue("@City", City.Text);
-                cmd.Parameters.AddWithValue("@Address", Address.Text);
-                cmd.Parameters.AddWithValue("@UserId", viewModel.CurrentUser.Id);
-                con.Open();
-                cmd.ExecuteNonQuery();
-                con.Close();
-                user = viewModel.CurrentUser;
-                MessageBox.Show("Profile mofified!");
+                try
+                {
+                    SqlConnection con = new SqlConnection("Data Source=DESKTOP-I78MCPL;Initial Catalog=VetApp;Integrated Security=True");
+                    SqlCommand cmd = new SqlCommand(
+                        "Update [User] set " +
+                        "cnp = @Cnp, " +
+                        "first_name = @FirstName, " +
+                        "last_name = @LastName, " +
+                        "email = @Email, " +
+                        "phone_no = @Phone, " +
+                        "country = @Country, " +
+                        "district = @State, " +
+                        "city = @City, " +
+                        "address = @Address " +
+                        "where user_id = @UserId;", con);
+                    cmd.Parameters.AddWithValue("@Cnp", Cnp.Text);
+                    cmd.Parameters.AddWithValue("@FirstName", FirstName.Text);
+                    cmd.Parameters.AddWithValue("@LastName", LastName.Text);
+                    cmd.Parameters.AddWithValue("@Email", Email.Text);
+                    cmd.Parameters.AddWithValue("@Phone", Phone.Text);
+                    cmd.Parameters.AddWithValue("@Country", Country.Text);
+                    cmd.Parameters.AddWithValue("@State", State.Text);
+                    cmd.Parameters.AddWithValue("@City", City.Text);
+                    cmd.Parameters.AddWithValue("@Address", Address.Text);
+                    cmd.Parameters.AddWithValue("@UserId", viewModel.CurrentUser.Id);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    user = viewModel.CurrentUser;
+                    MessageBox.Show("Profile mofified!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Just a vet can modify!");
             }
         }
 
@@ -137,8 +146,15 @@ namespace VetApp.Views
         //}
         private void CreatePet_Click(object sender, RoutedEventArgs e)
         {
-            CreatePet createPet = new CreatePet(viewModel.Pets, user);
-            createPet.Show();
+            if (canModify == true)
+            {
+                CreatePet createPet = new CreatePet(viewModel.Pets, user);
+                createPet.Show();
+            }
+            else
+            {
+                MessageBox.Show("Just a vet can add pets.");
+            }
         }
 
         private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -153,7 +169,7 @@ namespace VetApp.Views
                         //This is the code which helps to show the data when the row is double clicked.
                         DataGridRow dgr = grid.ItemContainerGenerator.ContainerFromItem(grid.SelectedItem) as DataGridRow;
                         Pet dr = (Pet)dgr.Item;
-                        PetScreen profile = new PetScreen(dr);
+                        PetScreen profile = new PetScreen(dr, canModify);
                         profile.Show();
                     }
 
@@ -169,5 +185,11 @@ namespace VetApp.Views
         ClientProfileVM viewModel;
         User user;
         ObservableCollection<User> userList;
+        readonly bool canModify;
+
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.Refresh();
+        }
     }
 }

@@ -19,10 +19,13 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="auto"/>
@@ -31,7 +34,7 @@
             <ColumnDefinition Width="50"/>
         </Grid.ColumnDefinitions>
 
-        <DataGrid Grid.Row="1" Grid.RowSpan="8" Grid.Column="1" Grid.ColumnSpan="2" ItemsSource="{Binding Interventions}" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid Grid.Row="1" Grid.RowSpan="8" Grid.Column="1" Grid.ColumnSpan="3" ItemsSource="{Binding Interventions}" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
@@ -41,25 +44,34 @@
                 <DataGridTextColumn Header="Price" Binding="{Binding Price}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Grid.Row="9" Grid.Column="2" x:Name="CreatePet" Content="Add pet" Margin="5"/>
+        <Button Grid.Row="9" Grid.Column="2" x:Name="AddVaccine" Content="Add vaccine" Margin="5" Click="AddVaccine_Click"/>
+        <Button Grid.Row="10" Grid.Column="2" x:Name="AddDeparasitation" Content="Add deparasitation" Margin="5" Click="AddDeparasitation_Click"/>
+        <Button Grid.Row="11" Grid.Column="2" x:Name="AddTreatment" Content="Add treatment" Margin="5" Click="AddTreatment_Click"/>
+        <Button Grid.Row="12" Grid.Column="2" x:Name="AddOperation" Content="Add operation" Margin="5" Click="AddOperation_Click"/>
 
-        <TextBlock Grid.Row="1" Grid.Column="4" Text="Personal code:" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="2" Grid.Column="4" Text="Name:" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="3" Grid.Column="4" Text="Birthday:" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="4" Grid.Column="4" Text="Gender:" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="5" Grid.Column="4" Text="Species: " VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="6" Grid.Column="4" Text="Breed:" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="7" Grid.Column="4" Text="Color:" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="8" Grid.Column="4" Text="Marks:" VerticalAlignment="Center"/>
+        <Button Grid.Row="9" Grid.Column="3" x:Name="ViewVaccine" Content="See all vaccines" Margin="5"/>
+        <Button Grid.Row="10" Grid.Column="3" x:Name="ViewDeparasitation" Content="See all deparasitations" Margin="5"/>
+        <Button Grid.Row="11" Grid.Column="3" x:Name="ViewTreatment" Content="See all treatments" Margin="5"/>
+        <Button Grid.Row="12" Grid.Column="3" x:Name="ViewOperation" Content="See all operations" Margin="5"/>
 
-        <TextBox Grid.Row="1" Grid.Column="5" x:Name="PersonalCode" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.PersonalCode}"/>
-        <TextBox Grid.Row="2" Grid.Column="5" x:Name="Name" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.Name}"/>
-        <TextBox Grid.Row="3" Grid.Column="5" x:Name="Birthday" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.BirthdayString}"/>
-        <TextBox Grid.Row="4" Grid.Column="5" x:Name="Gender" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.Gender}"/>
-        <TextBox Grid.Row="5" Grid.Column="5" x:Name="Species" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.Species}"/>
-        <TextBox Grid.Row="6" Grid.Column="5" x:Name="Breed" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.Breed}"/>
-        <TextBox Grid.Row="7" Grid.Column="5" x:Name="Color" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.Color}"/>
-        <TextBox Grid.Row="8" Grid.Column="5" x:Name="Marks" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.Marks}"/>
-        <Button Grid.Row="9" Grid.Column="6" x:Name="Modify" Content="Modify" Margin="5" Click="Modify_Click"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="5" Text="Personal code:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="2" Grid.Column="5" Text="Name:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="3" Grid.Column="5" Text="Birthday:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="4" Grid.Column="5" Text="Gender:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="5" Grid.Column="5" Text="Species: " VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="6" Grid.Column="5" Text="Breed:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="7" Grid.Column="5" Text="Color:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="8" Grid.Column="5" Text="Marks:" VerticalAlignment="Center"/>
+
+        <TextBox Grid.Row="1" Grid.Column="6" x:Name="PersonalCode" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.PersonalCode}"/>
+        <TextBox Grid.Row="2" Grid.Column="6" x:Name="Name" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.Name}"/>
+        <TextBox Grid.Row="3" Grid.Column="6" x:Name="Birthday" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.BirthdayString}"/>
+        <TextBox Grid.Row="4" Grid.Column="6" x:Name="Gender" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.Gender}"/>
+        <TextBox Grid.Row="5" Grid.Column="6" x:Name="Species" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.Species}"/>
+        <TextBox Grid.Row="6" Grid.Column="6" x:Name="Breed" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.Breed}"/>
+        <TextBox Grid.Row="7" Grid.Column="6" x:Name="Color" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.Color}"/>
+        <TextBox Grid.Row="8" Grid.Column="6" x:Name="Marks" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.Marks}"/>
+        <Button Grid.Row="9" Grid.Column="7" x:Name="Modify" Content="Modify" Margin="5" Click="Modify_Click"/>
     </Grid>
 </Window>

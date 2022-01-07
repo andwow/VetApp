@@ -35,3 +35,5 @@ D:\VetApp\VetApp\VetApp\obj\Debug\Views\CreatePet.g.cs
 D:\VetApp\VetApp\VetApp\obj\Debug\Views\CreatePet.baml
 D:\VetApp\VetApp\VetApp\obj\Debug\Views\PetScreen.g.cs
 D:\VetApp\VetApp\VetApp\obj\Debug\Views\PetScreen.baml
+D:\VetApp\VetApp\VetApp\obj\Debug\Views\AddIntervention.g.cs
+D:\VetApp\VetApp\VetApp\obj\Debug\Views\AddIntervention.baml

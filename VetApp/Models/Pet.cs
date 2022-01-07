@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -140,7 +141,7 @@ namespace VetApp.Models
             }
             set
             {
-                birthday = DateTime.Parse(value + " 12:00:00");
+                birthday = DateTime.ParseExact(value, @"dd.MM.yyyy", provider);
                 NotifyPropertyChanged(nameof(Birthday));
             }
         }
@@ -153,5 +154,6 @@ namespace VetApp.Models
         private string breed;
         private string color;
         private string marks;
+        CultureInfo provider = CultureInfo.InvariantCulture;
     }
 }

@@ -39,7 +39,7 @@ namespace VetApp.Views
                         //This is the code which helps to show the data when the row is double clicked.
                         DataGridRow dgr = grid.ItemContainerGenerator.ContainerFromItem(grid.SelectedItem) as DataGridRow;
                         User dr = (User)dgr.Item;
-                        ClientProfile profile = new ClientProfile(viewModel.Clients, dr);
+                        ClientProfile profile = new ClientProfile(viewModel.Clients, dr, true);
                         profile.Show();
                     }
 

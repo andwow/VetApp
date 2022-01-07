@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -84,34 +85,47 @@ namespace VetApp.Models
         {
             get
             {
-                if (NextDate != null)
+                if (Date != null)
                 {
                     return date.Date.ToString(@"dd.MM.yyyy");
                 }
                 return "";
+            }
+            set
+            {
+                date = DateTime.ParseExact(value, @"dd.MM.yyyy", provider);
+                NotifyPropertyChanged(nameof(Date));
             }
         }
         public DateTime NextDate
         {
             get
             {
-                return date;
+                return nextDate;
             }
             set
             {
-                date = value;
+                nextDate = value;
                 NotifyPropertyChanged(nameof(Date));
+                NotifyPropertyChanged(nameof(DateString));
             }
         }
         public string NextDateString
         {
             get
             {
-                if (NextDate != null)
+                string returnedDate = nextDate.Date.ToString(@"dd.MM.yyyy");
+                if (returnedDate != "01.01.0001")
                 {
-                    return nextDate.Date.ToString(@"dd.MM.yyyy");
+                    return returnedDate;
                 }
                 return "";
+            }
+            set
+            {
+                nextDate = DateTime.ParseExact(value, @"dd.MM.yyyy", provider);
+                NotifyPropertyChanged(nameof(NextDate));
+                NotifyPropertyChanged(nameof(NextDateString));
             }
         }
         public double Price
@@ -136,5 +150,7 @@ namespace VetApp.Models
         DateTime date;
         DateTime nextDate;
         double price;
+
+        CultureInfo provider = CultureInfo.InvariantCulture;
     }
 }

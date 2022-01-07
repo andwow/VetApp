@@ -57,10 +57,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\Intervention.cs" />
+    <Compile Include="Models\Items.cs" />
     <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Models\Pet.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="ViewModels\AddInterventionVM.cs" />
     <Compile Include="ViewModels\ClientProfileVM.cs" />
     <Compile Include="ViewModels\ClientsVM.cs" />
     <Compile Include="ViewModels\EmployeesVM.cs" />
@@ -69,6 +71,9 @@
     <Compile Include="ViewModels\ProductScreenVM.cs" />
     <Compile Include="ViewModels\ProfileVM.cs" />
     <Compile Include="ViewModels\StocksVM.cs" />
+    <Compile Include="Views\AddIntervention.xaml.cs">
+      <DependentUpon>AddIntervention.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ClientProfile.xaml.cs">
       <DependentUpon>ClientProfile.xaml</DependentUpon>
     </Compile>
@@ -114,6 +119,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\AddIntervention.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ClientProfile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
