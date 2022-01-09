@@ -37,3 +37,7 @@ D:\VetApp\VetApp\VetApp\obj\Debug\Views\PetScreen.g.cs
 D:\VetApp\VetApp\VetApp\obj\Debug\Views\PetScreen.baml
 D:\VetApp\VetApp\VetApp\obj\Debug\Views\AddIntervention.g.cs
 D:\VetApp\VetApp\VetApp\obj\Debug\Views\AddIntervention.baml
+D:\VetApp\VetApp\VetApp\obj\Debug\Views\MyCart.g.cs
+D:\VetApp\VetApp\VetApp\obj\Debug\Views\MyCart.baml
+D:\VetApp\VetApp\VetApp\obj\Debug\Views\Interventions.g.cs
+D:\VetApp\VetApp\VetApp\obj\Debug\Views\Interventions.baml

@@ -7,18 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VetApp.Models;
+using VetApp.Views;
 
 namespace VetApp.ViewModels
 {
-    public class PetScreenVM
+    public class InterventionsVM
     {
-        public PetScreenVM(Pet pet)
+        public InterventionsVM(int intvType, int petId)
         {
-            this.CurrentPet = new Pet(pet);
-            Interventions = new ObservableCollection<Intervention>();
+            PetId = petId;
+            IntvType = intvType;
+            InterventionList = new ObservableCollection<Intervention>();
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-I78MCPL;Initial Catalog=VetApp;Integrated Security=True");
-            SqlCommand cmd = new SqlCommand("select * from [Intervention] where pet = @PetId order by intv_date desc", con);
-            cmd.Parameters.AddWithValue("@PetId", pet.Id);
+            SqlCommand cmd = new SqlCommand("select * from [Intervention] where pet = @PetId and intv_type = @Type order by intv_date desc", con);
+            cmd.Parameters.AddWithValue("@PetId", petId);
+            cmd.Parameters.AddWithValue("@Type", intvType);
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             sda.Fill(dt);
@@ -42,18 +45,18 @@ namespace VetApp.ViewModels
                         intv.NextDate = (DateTime)dt.Rows[i]["intv_next_date"];
                     }
                     intv.Price = (double)dt.Rows[i]["price"];
-                    Interventions.Add(intv);
+                    InterventionList.Add(intv);
                 }
             }
             con.Close();
         }
-
         public void Refresh()
         {
-            Interventions.Clear();
+            InterventionList.Clear();
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-I78MCPL;Initial Catalog=VetApp;Integrated Security=True");
-            SqlCommand cmd = new SqlCommand("select * from [Intervention] where pet = @PetId order by intv_date desc", con);
-            cmd.Parameters.AddWithValue("@PetId", CurrentPet.Id);
+            SqlCommand cmd = new SqlCommand("select * from [Intervention] where pet = @PetId and intv_type = @Type order by intv_date desc", con);
+            cmd.Parameters.AddWithValue("@PetId", PetId);
+            cmd.Parameters.AddWithValue("@Type", IntvType);
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             sda.Fill(dt);
@@ -77,13 +80,14 @@ namespace VetApp.ViewModels
                         intv.NextDate = (DateTime)dt.Rows[i]["intv_next_date"];
                     }
                     intv.Price = (double)dt.Rows[i]["price"];
-                    Interventions.Add(intv);
+                    InterventionList.Add(intv);
                 }
             }
             con.Close();
         }
 
-        public ObservableCollection<Intervention> Interventions { get; }
-        public Pet CurrentPet { get; }
+        public int PetId { get; }
+        public int IntvType { get; }
+        public ObservableCollection<Intervention> InterventionList { get; }
     }
 }

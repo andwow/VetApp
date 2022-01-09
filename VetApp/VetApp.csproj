@@ -56,6 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Intervention.cs" />
     <Compile Include="Models\Items.cs" />
     <Compile Include="Models\ModelBase.cs" />
@@ -66,7 +67,9 @@
     <Compile Include="ViewModels\ClientProfileVM.cs" />
     <Compile Include="ViewModels\ClientsVM.cs" />
     <Compile Include="ViewModels\EmployeesVM.cs" />
+    <Compile Include="ViewModels\InterventionsVM.cs" />
     <Compile Include="ViewModels\MainMenuVM.cs" />
+    <Compile Include="ViewModels\MyCartVM.cs" />
     <Compile Include="ViewModels\PetScreenVM.cs" />
     <Compile Include="ViewModels\ProductScreenVM.cs" />
     <Compile Include="ViewModels\ProfileVM.cs" />
@@ -92,8 +95,14 @@
     <Compile Include="Views\Employees.xaml.cs">
       <DependentUpon>Employees.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Interventions.xaml.cs">
+      <DependentUpon>Interventions.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MyCart.xaml.cs">
+      <DependentUpon>MyCart.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PetScreen.xaml.cs">
       <DependentUpon>PetScreen.xaml</DependentUpon>
@@ -147,7 +156,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Interventions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MyCart.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -21,12 +21,16 @@ namespace VetApp.Views
     /// </summary>
     public partial class AddIntervention : Window
     {
-        public AddIntervention(int intvType)
+        public AddIntervention(int intvType, Cart cart, int petId, int vetId)
         {
+            this.pet = petId;
+            this.vet = vetId;
+            this.cart = cart;
             this.intvType = intvType;
             viewModel = new AddInterventionVM(intvType);
             DataContext = viewModel;
             InitializeComponent();
+            Price.Text = "0";
         }
 
         private void AvailableProducts_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -92,10 +96,6 @@ namespace VetApp.Views
                 MessageBox.Show(ex.Message.ToString());
             }
         }
-
-        AddInterventionVM viewModel;
-        int intvType;
-
         private void UsedProducts_CurrentCellChanged(object sender, EventArgs e)
         {
             double price = 0;
@@ -105,6 +105,46 @@ namespace VetApp.Views
             }
             viewModel.CurrentIntervention.Price = price;
             Price.Text = viewModel.CurrentIntervention.Price.ToString();
+        }
+
+        AddInterventionVM viewModel;
+        Cart cart;
+        int intvType;
+        int vet;
+        int pet;
+
+        private void AddToCart_Click(object sender, RoutedEventArgs e)
+        {
+            Intervention intv = new Intervention
+            {
+                Id = cart.Interventions.Count + 1,
+                Name = IntvName.Text,
+                DateString = IntvDate.Text,
+                NextDateString = IntvNextDate.Text,
+                Type = intvType,
+                Pet = pet,
+                Vet = vet,
+                Price = double.Parse(Price.Text)
+            };
+            cart.TotalPrice += intv.Price;
+            cart.Interventions.Add(intv);
+
+            foreach(Product prod in viewModel.UsedProducts)
+            {
+                Items item = new Items
+                {
+                    ProductId = prod.Id,
+                    InterventionId = intv.Id,
+                    Id = cart.Items.Count + 1,
+                    Name = prod.Name,
+                    Type = intvType,
+                    Quantity = prod.Quantity,
+                    Price = prod.Price
+                };
+                cart.Items.Add(item);
+            }
+
+            this.Close();
         }
     }
 }

@@ -23,19 +23,10 @@ namespace VetApp.Views
     /// </summary>
     public partial class ClientProfile : Window
     {
-        public ClientProfile(User user, bool canModify)
+        public ClientProfile(User user, bool canModify, int vetId)
         {
-            this.canModify = canModify;
-            User userCopy = new User(user);
-            viewModel = new ClientProfileVM(userCopy);
-            DataContext = viewModel;
-            InitializeComponent();
-        }
-
-        public ClientProfile(ObservableCollection<User> userList, User user, bool canModify)
-        {
-            //this.user = user;
-            this.userList = userList;
+            this.vetId = vetId;
+            cart = new Cart();
             this.canModify = canModify;
             User userCopy = new User(user);
             viewModel = new ClientProfileVM(userCopy);
@@ -169,7 +160,7 @@ namespace VetApp.Views
                         //This is the code which helps to show the data when the row is double clicked.
                         DataGridRow dgr = grid.ItemContainerGenerator.ContainerFromItem(grid.SelectedItem) as DataGridRow;
                         Pet dr = (Pet)dgr.Item;
-                        PetScreen profile = new PetScreen(dr, canModify);
+                        PetScreen profile = new PetScreen(dr, canModify, cart, vetId);
                         profile.Show();
                     }
 
@@ -182,14 +173,22 @@ namespace VetApp.Views
             }
         }
 
+        int vetId;
         ClientProfileVM viewModel;
         User user;
-        ObservableCollection<User> userList;
         readonly bool canModify;
 
         private void Refresh_Click(object sender, RoutedEventArgs e)
         {
             viewModel.Refresh();
+        }
+
+        private Cart cart;
+
+        private void MyCart_Click(object sender, RoutedEventArgs e)
+        {
+            MyCart myCart = new MyCart(cart);
+            myCart.Show();
         }
     }
 }

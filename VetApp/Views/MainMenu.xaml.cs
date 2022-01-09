@@ -23,6 +23,7 @@ namespace VetApp.Views
     {
         public MainMenu(User user)
         {
+            vetId = user.Id;
             viewModel = new MainMenuVM(user);
             DataContext = viewModel;
             InitializeComponent();
@@ -50,8 +51,10 @@ namespace VetApp.Views
 
         private void Clients_Click(object sender, RoutedEventArgs e)
         {
-            Clients clients = new Clients();
+            Clients clients = new Clients(vetId);
             clients.Show();
         }
+
+        int vetId;
     }
 }

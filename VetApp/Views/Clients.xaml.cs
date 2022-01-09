@@ -21,8 +21,9 @@ namespace VetApp.Views
     /// </summary>
     public partial class Clients : Window
     {
-        public Clients()
+        public Clients(int vetId)
         {
+            this.vetId = vetId;
             viewModel = new ClientsVM();
             DataContext = viewModel;
             InitializeComponent();
@@ -39,7 +40,7 @@ namespace VetApp.Views
                         //This is the code which helps to show the data when the row is double clicked.
                         DataGridRow dgr = grid.ItemContainerGenerator.ContainerFromItem(grid.SelectedItem) as DataGridRow;
                         User dr = (User)dgr.Item;
-                        ClientProfile profile = new ClientProfile(viewModel.Clients, dr, true);
+                        ClientProfile profile = new ClientProfile(dr, true, vetId);
                         profile.Show();
                     }
 
@@ -59,6 +60,7 @@ namespace VetApp.Views
             createUser.Show();
         }
 
+        int vetId;
         private ClientsVM viewModel;
 
         private void Refresh_Click(object sender, RoutedEventArgs e)

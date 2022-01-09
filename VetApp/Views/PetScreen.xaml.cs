@@ -23,8 +23,10 @@ namespace VetApp.Views
     /// </summary>
     public partial class PetScreen : Window
     {
-        public PetScreen(Pet pet, bool canModify)
+        public PetScreen(Pet pet, bool canModify, Cart cart, int vetId)
         {
+            this.vetId = vetId;
+            this.cart = cart;
             this.canModify = canModify;
             viewModel = new PetScreenVM(pet);
             DataContext = viewModel;
@@ -79,26 +81,92 @@ namespace VetApp.Views
 
         private void AddVaccine_Click(object sender, RoutedEventArgs e)
         {
-            AddIntervention addIntervention = new AddIntervention(1);
-            addIntervention.Show();
+            if (vetId != 0)
+            {
+                AddIntervention addIntervention = new AddIntervention(1, cart, viewModel.CurrentPet.Id, vetId);
+                addIntervention.Show();
+            }
+            else
+            {
+                MessageBox.Show("Just a vet can add interventions");
+            }
         }
 
         private void AddDeparasitation_Click(object sender, RoutedEventArgs e)
         {
-            AddIntervention addIntervention = new AddIntervention(2);
-            addIntervention.Show();
+            if (vetId != 0)
+            {
+                AddIntervention addIntervention = new AddIntervention(2, cart, viewModel.CurrentPet.Id, vetId);
+                addIntervention.Show();
+            }
+            else
+            {
+                MessageBox.Show("Just a vet can add interventions");
+            }
         }
 
         private void AddTreatment_Click(object sender, RoutedEventArgs e)
         {
-            AddIntervention addIntervention = new AddIntervention(3);
-            addIntervention.Show();
+            if (vetId != 0)
+            {
+                AddIntervention addIntervention = new AddIntervention(3, cart, viewModel.CurrentPet.Id, vetId);
+                addIntervention.Show();
+            }
+            else
+            {
+                MessageBox.Show("Just a vet can add interventions");
+            }
         }
 
         private void AddOperation_Click(object sender, RoutedEventArgs e)
         {
-            AddIntervention addIntervention = new AddIntervention(4);
-            addIntervention.Show();
+            if (vetId != 0)
+            {
+                AddIntervention addIntervention = new AddIntervention(4, cart, viewModel.CurrentPet.Id, vetId);
+                addIntervention.Show();
+            }
+            else
+            {
+                MessageBox.Show("Just a vet can add interventions");
+            }
+        }
+
+        int vetId;
+        private Cart cart;
+
+        private void MyCart_Click(object sender, RoutedEventArgs e)
+        {
+            MyCart myCart = new MyCart(cart);
+            myCart.Show();
+        }
+
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.Refresh();
+        }
+
+        private void ViewVaccine_Click(object sender, RoutedEventArgs e)
+        {
+                Interventions interventions = new Interventions(1, cart, viewModel.CurrentPet.Id, vetId);
+                interventions.Show();
+        }
+
+        private void ViewDeparasitation_Click(object sender, RoutedEventArgs e)
+        {
+                Interventions interventions = new Interventions(2, cart, viewModel.CurrentPet.Id, vetId);
+                interventions.Show();
+        }
+
+        private void ViewTreatment_Click(object sender, RoutedEventArgs e)
+        {
+                Interventions interventions = new Interventions(3, cart, viewModel.CurrentPet.Id, vetId);
+                interventions.Show();
+        }
+
+        private void ViewOperation_Click(object sender, RoutedEventArgs e)
+        {
+                Interventions interventions = new Interventions(4, cart, viewModel.CurrentPet.Id, vetId);
+                interventions.Show();
         }
     }
 }

@@ -53,7 +53,7 @@ namespace VetApp
                 }
                 else
                 {
-                    ClientProfile clientProfile = new ClientProfile(user, false);
+                    ClientProfile clientProfile = new ClientProfile(user, false, 0);
                     clientProfile.Show();
                 }
                 this.Close();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VetApp.Models
 {
-    class Items : ModelBase
+    public class Items : ModelBase
     {
         public int Id
         {
@@ -44,7 +44,7 @@ namespace VetApp.Models
                 NotifyPropertyChanged(nameof(Type));
             }
         }
-        public float Quantity
+        public double Quantity
         {
             get
             {
@@ -56,7 +56,7 @@ namespace VetApp.Models
                 NotifyPropertyChanged(nameof(Quantity));
             }
         }
-        public float Price
+        public double Price
         {
             get
             {
@@ -95,8 +95,8 @@ namespace VetApp.Models
         int id;
         string name;
         int type;
-        float quantity;
-        float price;
+        double quantity;
+        double price;
         int productId;
         int interventionId;
     }

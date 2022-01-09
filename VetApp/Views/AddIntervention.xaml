@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VetApp.Views"
         mc:Ignorable="d"
-        Title="AddVaccine" Height="600" Width="450" Background="LightSkyBlue">
+        Title="AddVaccine" Height="600" Width="525" Background="LightSkyBlue">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
@@ -62,7 +62,7 @@
                 <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" />
             </DataGrid.Columns>
         </DataGrid>
-        <TextBlock Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" Text="Double-click on a product to remove it from cart." VerticalAlignment="Bottom"/>
+        <TextBlock Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="5" Text="Double-click on a product to remove it from cart. You can modify the quantity." VerticalAlignment="Bottom"/>
         <DataGrid x:Name="UsedProducts" Grid.Row="7" Grid.Column="1" ItemsSource="{Binding UsedProducts}" CurrentCellChanged="UsedProducts_CurrentCellChanged" MouseDoubleClick="UsedProducts_MouseDoubleClick" AutoGenerateColumns="False" Grid.ColumnSpan="3">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" />
@@ -75,6 +75,6 @@
         </DataGrid>
         <TextBlock Text="Price:" Grid.Row="8" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right"/>
         <TextBox x:Name="Price" Grid.Row="8" Grid.Column="2" Margin="5" IsReadOnly="True"/>
-        <Button Grid.Row="9" Grid.Column="2" x:Name="CreateProduct" Content="Add intervention" Margin="5"/>
+        <Button Grid.Row="9" Grid.Column="2" x:Name="AddToCart" Content="Add to cart" Margin="5" Click="AddToCart_Click"/>
     </Grid>
 </Window>
