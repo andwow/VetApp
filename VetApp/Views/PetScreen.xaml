@@ -5,10 +5,69 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VetApp.Views"
         mc:Ignorable="d"
-        Title="PetScreen" Height="500" Width="800" Background="LightSkyBlue">
+        Title="PetScreen" Height="500" Width="800" Background="LightSkyBlue" WindowState="Maximized">
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <!--<Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Verdana"/>
+            <Setter Property="Padding" Value="5"/>-->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border BorderBrush="White" BorderThickness="2" CornerRadius="10" Padding="5">
+                            <Border.Background>
+                                <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                    <RadialGradientBrush.RelativeTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform CenterX="0.5" CenterY="0.5" 
+                                                        ScaleX="1.5" ScaleY="1.5"/>
+                                            <TranslateTransform X="0.02" Y="0.3"/>
+                                        </TransformGroup>
+                                    </RadialGradientBrush.RelativeTransform>
+                                    <GradientStop Offset="1" Color="DeepSkyBlue"/>
+                                    <GradientStop Offset="0.3" Color="SkyBlue"/>
+                                    <GradientStop Offset="0.3" Color="LightSkyBlue"/>
+                                </RadialGradientBrush>
+                            </Border.Background>
+                            <TextBlock Text="{TemplateBinding Button.Content}" VerticalAlignment="Center" FontSize="12" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Verdana" Foreground="White"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Template" >
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border BorderBrush="DarkBlue" BorderThickness="2" CornerRadius="10" Padding="5">
+                                    <Border.Background>
+                                        <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                            <RadialGradientBrush.RelativeTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform CenterX="0.5" CenterY="0.5" 
+                                                        ScaleX="1.5" ScaleY="1.5"/>
+                                                    <TranslateTransform X="0.02" Y="0.3"/>
+                                                </TransformGroup>
+                                            </RadialGradientBrush.RelativeTransform>
+                                            <GradientStop Offset="1" Color="LightBlue"/>
+                                            <GradientStop Offset="0.3" Color="White"/>
+                                        </RadialGradientBrush>
+                                    </Border.Background>
+                                    <TextBlock Text="{TemplateBinding Button.Content}" VerticalAlignment="Center" FontSize="12" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Verdana" Foreground="DarkBlue"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="0.5*"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -22,20 +81,22 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="0.5*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="50"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Button Grid.Row="1" Grid.Column="7" Margin="10" x:Name="MyCart" Content="My cart" Click="MyCart_Click"/>
-        <DataGrid Grid.Row="2" Grid.RowSpan="8" Grid.Column="1" Grid.ColumnSpan="3" ItemsSource="{Binding Interventions}" AutoGenerateColumns="False" IsReadOnly="True">
+        <Button Grid.Row="1" Grid.Column="8" Margin="10" x:Name="MyCart" Content="My cart" Click="MyCart_Click"/>
+        <DataGrid Grid.Row="2" Grid.RowSpan="8" Grid.Column="1" Grid.ColumnSpan="4" ItemsSource="{Binding Interventions}" AutoGenerateColumns="False" IsReadOnly="True" MouseDoubleClick="DataGrid_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
@@ -45,35 +106,35 @@
                 <DataGridTextColumn Header="Price" Binding="{Binding Price}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Grid.Row="10" Grid.Column="2" x:Name="AddVaccine" Content="Add vaccine" Margin="5" Click="AddVaccine_Click"/>
-        <Button Grid.Row="11" Grid.Column="2" x:Name="AddDeparasitation" Content="Add deparasitation" Margin="5" Click="AddDeparasitation_Click"/>
-        <Button Grid.Row="12" Grid.Column="2" x:Name="AddTreatment" Content="Add treatment" Margin="5" Click="AddTreatment_Click"/>
-        <Button Grid.Row="13" Grid.Column="2" x:Name="AddOperation" Content="Add operation" Margin="5" Click="AddOperation_Click"/>
+        <Button Grid.Row="10" Grid.Column="3" x:Name="AddVaccine" Content="Add vaccine" Margin="5" Click="AddVaccine_Click"/>
+        <Button Grid.Row="11" Grid.Column="3" x:Name="AddDeparasitation" Content="Add deparasitation" Margin="5" Click="AddDeparasitation_Click"/>
+        <Button Grid.Row="12" Grid.Column="3" x:Name="AddTreatment" Content="Add treatment" Margin="5" Click="AddTreatment_Click"/>
+        <Button Grid.Row="13" Grid.Column="3" x:Name="AddOperation" Content="Add operation" Margin="5" Click="AddOperation_Click"/>
 
-        <Button Grid.Row="10" Grid.Column="3" x:Name="ViewVaccine" Content="See all vaccines" Margin="5" Click="ViewVaccine_Click"/>
-        <Button Grid.Row="11" Grid.Column="3" x:Name="ViewDeparasitation" Content="See all deparasitations" Margin="5" Click="ViewDeparasitation_Click"/>
-        <Button Grid.Row="12" Grid.Column="3" x:Name="ViewTreatment" Content="See all treatments" Margin="5" Click="ViewTreatment_Click"/>
-        <Button Grid.Row="13" Grid.Column="3" x:Name="ViewOperation" Content="See all operations" Margin="5" Click="ViewOperation_Click"/>
+        <Button Grid.Row="10" Grid.Column="4" x:Name="ViewVaccine" Content="See all vaccines" Margin="5" Click="ViewVaccine_Click"/>
+        <Button Grid.Row="11" Grid.Column="4" x:Name="ViewDeparasitation" Content="See all deparasitations" Margin="5" Click="ViewDeparasitation_Click"/>
+        <Button Grid.Row="12" Grid.Column="4" x:Name="ViewTreatment" Content="See all treatments" Margin="5" Click="ViewTreatment_Click"/>
+        <Button Grid.Row="13" Grid.Column="4" x:Name="ViewOperation" Content="See all operations" Margin="5" Click="ViewOperation_Click"/>
 
 
-        <TextBlock Grid.Row="2" Grid.Column="5" Text="Personal code:" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="3" Grid.Column="5" Text="Name:" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="4" Grid.Column="5" Text="Birthday:" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="5" Grid.Column="5" Text="Gender:" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="6" Grid.Column="5" Text="Species: " VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="7" Grid.Column="5" Text="Breed:" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="8" Grid.Column="5" Text="Color:" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="9" Grid.Column="5" Text="Marks:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="2" Grid.Column="6" Text="Personal code:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="3" Grid.Column="6" Text="Name:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="4" Grid.Column="6" Text="Birthday:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="5" Grid.Column="6" Text="Gender:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="6" Grid.Column="6" Text="Species: " VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="7" Grid.Column="6" Text="Breed:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="8" Grid.Column="6" Text="Color:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="9" Grid.Column="6" Text="Marks:" VerticalAlignment="Center"/>
 
-        <TextBox Grid.Row="2" Grid.Column="6" x:Name="PersonalCode" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.PersonalCode}"/>
-        <TextBox Grid.Row="3" Grid.Column="6" x:Name="Name" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.Name}"/>
-        <TextBox Grid.Row="4" Grid.Column="6" x:Name="Birthday" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.BirthdayString}"/>
-        <TextBox Grid.Row="5" Grid.Column="6" x:Name="Gender" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.Gender}"/>
-        <TextBox Grid.Row="6" Grid.Column="6" x:Name="Species" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.Species}"/>
-        <TextBox Grid.Row="7" Grid.Column="6" x:Name="Breed" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.Breed}"/>
-        <TextBox Grid.Row="8" Grid.Column="6" x:Name="Color" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.Color}"/>
-        <TextBox Grid.Row="9" Grid.Column="6" x:Name="Marks" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.Marks}"/>
-        <Button Grid.Row="10" Grid.Column="7" x:Name="Modify" Content="Modify" Margin="5" Click="Modify_Click"/>
-        <Button Grid.Row="10" Grid.Column="1" x:Name="Refresh" Content="Refresh table" Margin="5" Click="Refresh_Click"/>
+        <TextBox Grid.Row="2" Grid.Column="7" x:Name="PersonalCode" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.PersonalCode}"/>
+        <TextBox Grid.Row="3" Grid.Column="7" x:Name="Name" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.Name}"/>
+        <TextBox Grid.Row="4" Grid.Column="7" x:Name="Birthday" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.BirthdayString}"/>
+        <TextBox Grid.Row="5" Grid.Column="7" x:Name="Gender" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.Gender}"/>
+        <TextBox Grid.Row="6" Grid.Column="7" x:Name="Species" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.Species}"/>
+        <TextBox Grid.Row="7" Grid.Column="7" x:Name="Breed" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.Breed}"/>
+        <TextBox Grid.Row="8" Grid.Column="7" x:Name="Color" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.Color}"/>
+        <TextBox Grid.Row="9" Grid.Column="7" x:Name="Marks" Grid.ColumnSpan="2" Margin="5" Text="{Binding CurrentPet.Marks}"/>
+        <Button Grid.Row="10" Grid.Column="8" x:Name="Modify" Content="Modify" Margin="5" Click="Modify_Click"/>
+        <Button Grid.Row="10" Grid.Column="2" x:Name="Refresh" Content="Refresh table" Margin="5" Click="Refresh_Click"/>
     </Grid>
 </Window>

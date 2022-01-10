@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -115,6 +116,28 @@ namespace VetApp.Views
 
         private void AddToCart_Click(object sender, RoutedEventArgs e)
         {
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-I78MCPL;Initial Catalog=VetApp;Integrated Security=True");
+            con.Open();
+            foreach (Product usedProd in viewModel.UsedProducts)
+            {
+                foreach (Product availProd in viewModel.AvailableProducts)
+                {
+                    if (usedProd.Id == availProd.Id && availProd.Quantity - usedProd.Quantity < 0)
+                    {
+                        MessageBox.Show("Too much used quantity for " + usedProd.Name + ".");
+                        return;
+                    }
+                    else if (usedProd.Id == availProd.Id)
+                    {
+                        double newQuantity = availProd.Quantity - usedProd.Quantity;
+                        SqlCommand cmd = new SqlCommand("Update [Product] set quantity = @Qty where prod_id = @ProdId;", con);
+                        cmd.Parameters.AddWithValue("@Qty", newQuantity);
+                        cmd.Parameters.AddWithValue("@ProdId", usedProd.Id);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            con.Close();
             Intervention intv = new Intervention
             {
                 Id = cart.Interventions.Count + 1,

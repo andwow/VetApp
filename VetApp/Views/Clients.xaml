@@ -5,33 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VetApp.Views"
         mc:Ignorable="d"
-        Title="Clients" Height="450" Width="800" Background="LightSkyBlue">
+        Title="Clients" Height="450" Width="800" Background="LightSkyBlue" WindowState="Maximized">
     <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="auto"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Text="Double-click on a client to see his profile." VerticalAlignment="Bottom"/>
-            <DataGrid Grid.Row="1" ItemsSource="{Binding Clients}" IsReadOnly="True" MouseDoubleClick="DataGrid_MouseDoubleClick" AutoGenerateColumns="False" Grid.ColumnSpan="3">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
-                    <DataGridTextColumn Header="First name" Binding="{Binding FirstName}" />
-                    <DataGridTextColumn Header="Last name" Binding="{Binding LastName}" />
-                    <DataGridTextColumn Header="E-mail" Binding="{Binding Email}" />
-                    <DataGridTextColumn Header="Phone no." Binding="{Binding Phone}" />
-                    <DataGridTextColumn Header="Country" Binding="{Binding Country}" />
-                    <DataGridTextColumn Header="State" Binding="{Binding District}" />
-                    <DataGridTextColumn Header="City" Binding="{Binding City}" />
-                    <DataGridTextColumn Header="Address" Binding="{Binding Address}" />
-                </DataGrid.Columns>
-            </DataGrid>
-            <Button Grid.Row="2" Grid.Column="1" x:Name="Refresh" Content="Refresh" Margin="5" Click="Refresh_Click"/>
-            <Button Grid.Row="2" Grid.Column="2" x:Name="CreateUser" Content="Add user" Margin="5" Click="CreateUser_Click"/>
-        </Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="1" Text="Double-click on a client to see his profile." VerticalAlignment="Bottom"/>
+        <DataGrid Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Clients}" IsReadOnly="True" MouseDoubleClick="DataGrid_MouseDoubleClick" AutoGenerateColumns="False" Grid.ColumnSpan="3">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
+                <DataGridTextColumn Header="First name" Binding="{Binding FirstName}" />
+                <DataGridTextColumn Header="Last name" Binding="{Binding LastName}" />
+                <DataGridTextColumn Header="E-mail" Binding="{Binding Email}" />
+                <DataGridTextColumn Header="Phone no." Binding="{Binding Phone}" />
+                <DataGridTextColumn Header="Country" Binding="{Binding Country}" />
+                <DataGridTextColumn Header="State" Binding="{Binding District}" />
+                <DataGridTextColumn Header="City" Binding="{Binding City}" />
+                <DataGridTextColumn Header="Address" Binding="{Binding Address}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Grid.Row="2" Grid.Column="2" x:Name="Refresh" Content="Refresh" Margin="5" Click="Refresh_Click"/>
+        <Button Grid.Row="2" Grid.Column="3" x:Name="CreateUser" Content="Add user" Margin="5" Click="CreateUser_Click"/>
+    </Grid>
 </Window>

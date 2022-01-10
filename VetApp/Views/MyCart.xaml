@@ -8,22 +8,24 @@
         Title="MyCart" Height="450" Width="700" Background="LightSkyBlue">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="3*"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="1" Grid.Column="1" Text="Double-click on an intervention to remove it. You can modify the Name and the Next date." VerticalAlignment="Bottom"/>
-        <DataGrid x:Name="Interventions" Grid.Row="2" Grid.Column="1" ItemsSource="{Binding MyCart.Interventions}" AutoGenerateColumns="False" Grid.ColumnSpan="4" MouseDoubleClick="Interventions_MouseDoubleClick">
+        <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Text="Double-click on an intervention to remove it. You can modify the Name and the Next date." VerticalAlignment="Bottom"/>
+        <DataGrid x:Name="Interventions" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" ItemsSource="{Binding MyCart.Interventions}" AutoGenerateColumns="False" MouseDoubleClick="Interventions_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Pet ID" Binding="{Binding Pet}" IsReadOnly="True"/>
@@ -35,7 +37,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <TextBlock Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Text="Double-click on a product to remove it from the cart. You can modify the Quantity." VerticalAlignment="Bottom"/>
-        <DataGrid x:Name="UsedProducts" Grid.Row="5" Grid.Column="1" ItemsSource="{Binding MyCart.Items}" AutoGenerateColumns="False" Grid.ColumnSpan="3" CurrentCellChanged="UsedProducts_CurrentCellChanged" MouseDoubleClick="UsedProducts_MouseDoubleClick">
+        <DataGrid x:Name="UsedProducts" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" ItemsSource="{Binding MyCart.Items}" AutoGenerateColumns="False" CurrentCellChanged="UsedProducts_CurrentCellChanged" MouseDoubleClick="UsedProducts_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" />
                 <DataGridTextColumn Header="Intervention ID" Binding="{Binding InterventionId}" IsReadOnly="True"/>

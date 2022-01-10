@@ -6,6 +6,169 @@
         xmlns:local="clr-namespace:VetApp.Views"
         mc:Ignorable="d"
         Title="Profile" Height="550" Width="400" Background="LightSkyBlue">
+    <Window.Resources>
+        <!--<Style TargetType="{x:Type PasswordBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type PasswordBox}">
+                        <Border BorderBrush="DarkBlue" BorderThickness="2" CornerRadius="10" Padding="5">
+                            <Border.Background>
+                                <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                    <RadialGradientBrush.RelativeTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform CenterX="0.5" CenterY="0.5" 
+                                                        ScaleX="1.5" ScaleY="1.5"/>
+                                            <TranslateTransform X="0.02" Y="0.3"/>
+                                        </TransformGroup>
+                                    </RadialGradientBrush.RelativeTransform>
+                                    <GradientStop Offset="0.3" Color="LightSkyBlue"/>
+                                    <GradientStop Offset="1" Color="White"/>
+                                </RadialGradientBrush>
+                            </Border.Background>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border BorderBrush="DarkBlue" BorderThickness="2" CornerRadius="10" Padding="5">
+                            <Border.Background>
+                                <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                    <RadialGradientBrush.RelativeTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform CenterX="0.5" CenterY="0.5" 
+                                                        ScaleX="1.5" ScaleY="1.5"/>
+                                            <TranslateTransform X="0.02" Y="0.3"/>
+                                        </TransformGroup>
+                                    </RadialGradientBrush.RelativeTransform>
+                                    <GradientStop Offset="0.3" Color="LightSkyBlue"/>
+                                    <GradientStop Offset="1" Color="White"/>
+                                </RadialGradientBrush>
+                            </Border.Background>
+                            <TextBlock Text="{TemplateBinding Text}" 
+                            --><!--<TextBox Text="{TemplateBinding }" VerticalAlignment="Center" FontSize="10" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Verdana" Foreground="DarkBlue"/>--><!--
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>-->
+        <Style TargetType="{x:Type Button}">
+            <!--<Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Verdana"/>
+            <Setter Property="Padding" Value="5"/>-->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border BorderBrush="White" BorderThickness="2" CornerRadius="10" Padding="5">
+                            <Border.Background>
+                                <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                    <RadialGradientBrush.RelativeTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform CenterX="0.5" CenterY="0.5" 
+                                                        ScaleX="1.5" ScaleY="1.5"/>
+                                            <TranslateTransform X="0.02" Y="0.3"/>
+                                        </TransformGroup>
+                                    </RadialGradientBrush.RelativeTransform>
+                                    <GradientStop Offset="1" Color="DeepSkyBlue"/>
+                                    <GradientStop Offset="0.3" Color="SkyBlue"/>
+                                    <GradientStop Offset="0.3" Color="LightSkyBlue"/>
+                                </RadialGradientBrush>
+                            </Border.Background>
+                            <TextBlock Text="{TemplateBinding Button.Content}" VerticalAlignment="Center" FontSize="10" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Verdana" Foreground="White"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Template" >
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border BorderBrush="DarkBlue" BorderThickness="2" CornerRadius="10" Padding="5">
+                                    <Border.Background>
+                                        <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                            <RadialGradientBrush.RelativeTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform CenterX="0.5" CenterY="0.5" 
+                                                        ScaleX="1.5" ScaleY="1.5"/>
+                                                    <TranslateTransform X="0.02" Y="0.3"/>
+                                                </TransformGroup>
+                                            </RadialGradientBrush.RelativeTransform>
+                                            <GradientStop Offset="1" Color="LightBlue"/>
+                                            <GradientStop Offset="0.3" Color="White"/>
+                                        </RadialGradientBrush>
+                                    </Border.Background>
+                                    <TextBlock Text="{TemplateBinding Button.Content}" VerticalAlignment="Center" FontSize="10" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Verdana" Foreground="DarkBlue"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="RedButton" TargetType="{x:Type Button}">
+            <!--<Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Verdana"/>
+            <Setter Property="Padding" Value="5"/>-->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border BorderBrush="White" BorderThickness="2" CornerRadius="10" Padding="5">
+                            <Border.Background>
+                                <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                    <RadialGradientBrush.RelativeTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform CenterX="0.5" CenterY="0.5" 
+                                                        ScaleX="1.5" ScaleY="1.5"/>
+                                            <TranslateTransform X="0.02" Y="0.3"/>
+                                        </TransformGroup>
+                                    </RadialGradientBrush.RelativeTransform>
+                                    <GradientStop Offset="0.3" Color="OrangeRed"/>
+                                    <GradientStop Offset="0.3" Color="Red"/>
+                                </RadialGradientBrush>
+                            </Border.Background>
+                            <TextBlock Text="{TemplateBinding Button.Content}" VerticalAlignment="Center" FontSize="10" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Verdana" Foreground="White"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Template" >
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border BorderBrush="Red" BorderThickness="2" CornerRadius="10" Padding="5">
+                                    <Border.Background>
+                                        <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                            <RadialGradientBrush.RelativeTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform CenterX="0.5" CenterY="0.5" 
+                                                        ScaleX="1.5" ScaleY="1.5"/>
+                                                    <TranslateTransform X="0.02" Y="0.3"/>
+                                                </TransformGroup>
+                                            </RadialGradientBrush.RelativeTransform>
+                                            <GradientStop Offset="1" Color="LightBlue"/>
+                                            <GradientStop Offset="0.3" Color="White"/>
+                                        </RadialGradientBrush>
+                                    </Border.Background>
+                                    <TextBlock Text="{TemplateBinding Button.Content}" VerticalAlignment="Center" FontSize="10" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Verdana" Foreground="Red"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -31,7 +194,7 @@
             <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="1" Grid.Column="1" Text="CNP:" VerticalAlignment="Center"/>
@@ -59,6 +222,6 @@
         <PasswordBox Grid.Row="13" Grid.Column="2" x:Name="NewPassword" Grid.ColumnSpan="2" Margin="5"/>
         <PasswordBox Grid.Row="14" Grid.Column="2" x:Name="ConfirmPass" Grid.ColumnSpan="2" Margin="5"/>
         <Button Grid.Row="15" Grid.Column="3" x:Name="ResetPassword" Content="Reset Password" Margin="5" Click="ResetPassword_Click"/>
-        <Button Grid.Row="17" Grid.Column="3" x:Name="Delete" Background="Red" Foreground="White" Content="Delete account" Margin="5" Click="Delete_Click"/>
+        <Button Grid.Row="17" Grid.Column="3" x:Name="Delete" Style="{StaticResource RedButton}" Foreground="White" Content="Delete account" Margin="5" Click="Delete_Click"/>
     </Grid>
 </Window>

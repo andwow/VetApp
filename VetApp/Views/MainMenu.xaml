@@ -5,25 +5,88 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VetApp.Views"
         mc:Ignorable="d"
-        Title="Main Menu" Height="450" Width="800" Background="LightSkyBlue">
+        Title="Main Menu" Height="450" Width="800" Background="LightSkyBlue" WindowState="Maximized">
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <!--<Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Verdana"/>
+            <Setter Property="Padding" Value="5"/>-->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border BorderBrush="White" BorderThickness="2" CornerRadius="10" Padding="10">
+                            <Border.Background>
+                                <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                    <RadialGradientBrush.RelativeTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform CenterX="0.5" CenterY="0.5" 
+                                                        ScaleX="1.5" ScaleY="1.5"/>
+                                            <TranslateTransform X="0.02" Y="0.3"/>
+                                        </TransformGroup>
+                                    </RadialGradientBrush.RelativeTransform>
+                                    <GradientStop Offset="1" Color="DeepSkyBlue"/>
+                                    <GradientStop Offset="0.3" Color="SkyBlue"/>
+                                    <GradientStop Offset="0.3" Color="LightSkyBlue"/>
+                                </RadialGradientBrush>
+                            </Border.Background>
+                            <TextBlock Text="{TemplateBinding Button.Content}" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Verdana" Foreground="White"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Template" >
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border BorderBrush="DarkBlue" BorderThickness="2" CornerRadius="10" Padding="10">
+                                    <Border.Background>
+                                        <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                            <RadialGradientBrush.RelativeTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform CenterX="0.5" CenterY="0.5" 
+                                                        ScaleX="1.5" ScaleY="1.5"/>
+                                                    <TranslateTransform X="0.02" Y="0.3"/>
+                                                </TransformGroup>
+                                            </RadialGradientBrush.RelativeTransform>
+                                            <GradientStop Offset="1" Color="LightBlue"/>
+                                            <GradientStop Offset="0.3" Color="White"/>
+                                        </RadialGradientBrush>
+                                    </Border.Background>
+                                    <TextBlock Text="{TemplateBinding Button.Content}" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Verdana" Foreground="DarkBlue"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
+        <!--<Grid.Background>
+            <ImageBrush ImageSource="../Images/bg1.png"/>
+        </Grid.Background>-->
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Vet App" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" Foreground="White" FontWeight="Bold"/>
+        
+        <TextBlock Text="Vet App" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" Foreground="White" FontWeight="Bold"/>
         <Button Grid.Row="1" Grid.Column="1" x:Name="Clients" Content="Clients" Margin="5" Click="Clients_Click"/>
-        <Button Grid.Row="1" Grid.Column="2" x:Name="Stocks" Content="Stocks" Margin="5" Click="Stocks_Click"/>
-        <Button Grid.Row="1" Grid.Column="3" x:Name="Employees" Content="Employees" Margin="5" Click="Employees_Click"/>
-        <Button Grid.Row="1" Grid.Column="4" x:Name="Profile" Content="My profile" Margin="5" Click="Profile_Click"/>
+        <Button Grid.Row="2" Grid.Column="1" x:Name="Stocks" Content="Stocks" Margin="5" Click="Stocks_Click"/>
+        <Button Grid.Row="3" Grid.Column="1" x:Name="Employees" Content="Employees" Margin="5" Click="Employees_Click"/>
+        <Button Grid.Row="4" Grid.Column="1" x:Name="Profile" Content="My profile" Margin="5" Click="Profile_Click"/>
     </Grid>
 </Window>

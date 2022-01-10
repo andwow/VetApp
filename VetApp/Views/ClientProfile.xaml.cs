@@ -187,8 +187,29 @@ namespace VetApp.Views
 
         private void MyCart_Click(object sender, RoutedEventArgs e)
         {
-            MyCart myCart = new MyCart(cart);
-            myCart.Show();
+            if (canModify)
+            {
+                MyCart myCart = new MyCart(cart);
+                myCart.Show();
+            }
+            else
+            {
+                MessageBox.Show("Just a vet can see your cart");
+            }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-I78MCPL;Initial Catalog=VetApp;Integrated Security=True");
+            con.Open();
+            foreach (Items item in cart.Items)
+            {
+                SqlCommand cmd = new SqlCommand("Update [Product] set quantity += @Qty where prod_id = @ProdId;", con);
+                cmd.Parameters.AddWithValue("@Qty", item.Quantity);
+                cmd.Parameters.AddWithValue("@ProdId", item.ProductId);
+                cmd.ExecuteNonQuery();
+            }
+            con.Close();
         }
     }
 }

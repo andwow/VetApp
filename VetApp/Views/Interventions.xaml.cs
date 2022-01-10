@@ -69,5 +69,35 @@ namespace VetApp.Views
         private readonly Cart cart;
         readonly int vetId;
         InterventionsVM viewModel;
+
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.Refresh();
+        }
+
+        private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                if (sender != null)
+                {
+                    DataGrid grid = sender as DataGrid;
+                    if (grid != null && grid.SelectedItems != null && grid.SelectedItems.Count == 1)
+                    {
+                        //This is the code which helps to show the data when the row is double clicked.
+                        DataGridRow dgr = grid.ItemContainerGenerator.ContainerFromItem(grid.SelectedItem) as DataGridRow;
+                        Intervention dr = (Intervention)dgr.Item;
+                        InterventionDetails profile = new InterventionDetails(dr);
+                        profile.Show();
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
     }
 }

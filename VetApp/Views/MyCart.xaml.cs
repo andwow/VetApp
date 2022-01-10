@@ -115,8 +115,34 @@ namespace VetApp.Views
                         //This is the code which helps to show the data when the row is double clicked.
                         DataGridRow dgr = grid.ItemContainerGenerator.ContainerFromItem(grid.SelectedItem) as DataGridRow;
                         Items dr = (Items) dgr.Item;
+                        SqlConnection con = new SqlConnection("Data Source=DESKTOP-I78MCPL;Initial Catalog=VetApp;Integrated Security=True");
+                        con.Open();
+                        SqlCommand cmd = new SqlCommand("Update [Product] set quantity += @Qty where prod_id = @ProdId;", con);
+                        cmd.Parameters.AddWithValue("@Qty", dr.Quantity);
+                        cmd.Parameters.AddWithValue("@ProdId", dr.ProductId);
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        int noOfItems = 0;
+                        foreach(Items item in viewModel.MyCart.Items)
+                        {
+                            if(item.InterventionId == dr.InterventionId)
+                            {
+                                ++noOfItems;
+                            }
+                        }
+                        if (noOfItems == 1)
+                        {
+                            foreach (Intervention intervention in viewModel.MyCart.Interventions.ToList())
+                            {
+                                if (intervention.Id == dr.InterventionId)
+                                {
+                                    viewModel.MyCart.Interventions.Remove(intervention);
+                                }
+                            }
+                        }
                         viewModel.MyCart.Items.Remove(dr);
                         RefreshPrice();
+                       
                     }
 
                 }
@@ -134,6 +160,8 @@ namespace VetApp.Views
             {
                 if (sender != null)
                 {
+                    SqlConnection con = new SqlConnection("Data Source=DESKTOP-I78MCPL;Initial Catalog=VetApp;Integrated Security=True");
+                    con.Open();
                     DataGrid grid = sender as DataGrid;
                     if (grid != null && grid.SelectedItems != null && grid.SelectedItems.Count == 1 && grid.CurrentColumn.Header.ToString() != "Name" && grid.CurrentColumn.Header.ToString() != "Next date")
                     {
@@ -147,11 +175,17 @@ namespace VetApp.Views
                         {
                             if (item.InterventionId == dr.Id)
                             {
+                                SqlCommand cmd = new SqlCommand("Update [Product] set quantity += @Qty where prod_id = @ProdId;", con);
+                                cmd.Parameters.AddWithValue("@Qty", item.Quantity);
+                                cmd.Parameters.AddWithValue("@ProdId", item.ProductId);
+                                cmd.ExecuteNonQuery();
+
                                 viewModel.MyCart.Items.Remove(item);
                             }
                         }
                         viewModel.MyCart.Interventions.Remove(dr);
                     }
+                    con.Close();
                 }
             }
             catch (Exception ex)

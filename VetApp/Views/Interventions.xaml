@@ -5,21 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VetApp.Views"
         mc:Ignorable="d"
-        Title="Interventions" Height="450" Width="800" Background="LightSkyBlue">
+        Title="Interventions" Height="450" Width="800" Background="LightSkyBlue" WindowState="Maximized">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="2*" />
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="3*" />
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" ItemsSource="{Binding InterventionList}" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" ItemsSource="{Binding InterventionList}" AutoGenerateColumns="False" IsReadOnly="True" MouseDoubleClick="DataGrid_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
@@ -29,6 +30,7 @@
                 <DataGridTextColumn Header="Price" Binding="{Binding Price}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Grid.Row="2" Grid.Column="2" x:Name="AddIntervention" Content="Add intervention" Margin="5" Click="AddIntervention_Click"/>
+        <Button Grid.Row="2" Grid.Column="2" x:Name="Refresh" Content="Refresh" Margin="5" Click="Refresh_Click"/>
+        <Button Grid.Row="2" Grid.Column="3" x:Name="AddIntervention" Content="Add intervention" Margin="5" Click="AddIntervention_Click"/>
     </Grid>
 </Window>

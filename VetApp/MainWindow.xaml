@@ -6,6 +6,65 @@
         xmlns:local="clr-namespace:VetApp"
         mc:Ignorable="d"
         Title="Login" Height="800" Width="1250" Background="LightSkyBlue">
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <!--<Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Verdana"/>
+            <Setter Property="Padding" Value="5"/>-->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border BorderBrush="White" BorderThickness="2" CornerRadius="10" Padding="10">
+                            <Border.Background>
+                                <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                    <RadialGradientBrush.RelativeTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform CenterX="0.5" CenterY="0.5" 
+                                                        ScaleX="1.5" ScaleY="1.5"/>
+                                            <TranslateTransform X="0.02" Y="0.3"/>
+                                        </TransformGroup>
+                                    </RadialGradientBrush.RelativeTransform>
+                                    <GradientStop Offset="1" Color="DeepSkyBlue"/>
+                                    <GradientStop Offset="0.3" Color="SkyBlue"/>
+                                    <GradientStop Offset="0.3" Color="LightSkyBlue"/>
+                                </RadialGradientBrush>
+                            </Border.Background>
+                            <TextBlock Text="{TemplateBinding Button.Content}" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Verdana" Foreground="White"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Template" >
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border BorderBrush="DarkBlue" BorderThickness="2" CornerRadius="10" Padding="10">
+                                    <Border.Background>
+                                        <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                            <RadialGradientBrush.RelativeTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform CenterX="0.5" CenterY="0.5" 
+                                                        ScaleX="1.5" ScaleY="1.5"/>
+                                                    <TranslateTransform X="0.02" Y="0.3"/>
+                                                </TransformGroup>
+                                            </RadialGradientBrush.RelativeTransform>
+                                            <GradientStop Offset="1" Color="LightBlue"/>
+                                            <GradientStop Offset="0.3" Color="White"/>
+                                        </RadialGradientBrush>
+                                    </Border.Background>
+                                    <TextBlock Text="{TemplateBinding Button.Content}" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Verdana" Foreground="DarkBlue"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Border CornerRadius="45" Background="White" Height="300" Width="600">
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
 
@@ -24,7 +83,7 @@
                 <TextBlock Grid.Row="1" Text="Password: " FontSize="20" Margin="0 20 0 0"/>
                 <PasswordBox x:Name="password" Grid.Row="1" Grid.Column="1" Width="300" Margin="0 20 0 0"/>
             </Grid>
-            <Button Content="Login" Margin="0 20 0 0" Height="20" Width="100" Click="Button_Click"/>
+            <Button Content="Login" Margin="0 20 0 0" Width="200" Click="Button_Click"/>
         </StackPanel>
     </Border>
 </Window>

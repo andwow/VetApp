@@ -67,6 +67,7 @@
     <Compile Include="ViewModels\ClientProfileVM.cs" />
     <Compile Include="ViewModels\ClientsVM.cs" />
     <Compile Include="ViewModels\EmployeesVM.cs" />
+    <Compile Include="ViewModels\InterventionDetailsVM.cs" />
     <Compile Include="ViewModels\InterventionsVM.cs" />
     <Compile Include="ViewModels\MainMenuVM.cs" />
     <Compile Include="ViewModels\MyCartVM.cs" />
@@ -94,6 +95,9 @@
     </Compile>
     <Compile Include="Views\Employees.xaml.cs">
       <DependentUpon>Employees.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InterventionDetails.xaml.cs">
+      <DependentUpon>InterventionDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Interventions.xaml.cs">
       <DependentUpon>Interventions.xaml</DependentUpon>
@@ -156,6 +160,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\InterventionDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Interventions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -210,6 +218,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bg1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -5,10 +5,69 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VetApp.Views"
         mc:Ignorable="d"
-        Title="ClientProfile" Height="550" Width="1100" Background="SkyBlue">
+        Title="ClientProfile" Height="550" Width="1100" Background="SkyBlue" WindowState="Maximized" Closing="Window_Closing">
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <!--<Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Verdana"/>
+            <Setter Property="Padding" Value="5"/>-->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border BorderBrush="White" BorderThickness="2" CornerRadius="10" Padding="5">
+                            <Border.Background>
+                                <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                    <RadialGradientBrush.RelativeTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform CenterX="0.5" CenterY="0.5" 
+                                                        ScaleX="1.5" ScaleY="1.5"/>
+                                            <TranslateTransform X="0.02" Y="0.3"/>
+                                        </TransformGroup>
+                                    </RadialGradientBrush.RelativeTransform>
+                                    <GradientStop Offset="1" Color="DeepSkyBlue"/>
+                                    <GradientStop Offset="0.3" Color="SkyBlue"/>
+                                    <GradientStop Offset="0.3" Color="LightSkyBlue"/>
+                                </RadialGradientBrush>
+                            </Border.Background>
+                            <TextBlock Text="{TemplateBinding Button.Content}" VerticalAlignment="Center" FontSize="12" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Verdana" Foreground="White"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Template" >
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border BorderBrush="DarkBlue" BorderThickness="2" CornerRadius="10" Padding="5">
+                                    <Border.Background>
+                                        <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                            <RadialGradientBrush.RelativeTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform CenterX="0.5" CenterY="0.5" 
+                                                        ScaleX="1.5" ScaleY="1.5"/>
+                                                    <TranslateTransform X="0.02" Y="0.3"/>
+                                                </TransformGroup>
+                                            </RadialGradientBrush.RelativeTransform>
+                                            <GradientStop Offset="1" Color="LightBlue"/>
+                                            <GradientStop Offset="0.3" Color="White"/>
+                                        </RadialGradientBrush>
+                                    </Border.Background>
+                                    <TextBlock Text="{TemplateBinding Button.Content}" VerticalAlignment="Center" FontSize="12" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Verdana" Foreground="DarkBlue"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -26,21 +85,21 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="50"/>
         </Grid.ColumnDefinitions>
         <Button Grid.Row="1" Grid.Column="7" Margin="10" x:Name="MyCart" Content="My cart" Click="MyCart_Click"/>
-        <DataGrid Grid.Row="2" Grid.RowSpan="15" Grid.Column="1" Grid.ColumnSpan="3" ItemsSource="{Binding Pets}" AutoGenerateColumns="False" IsReadOnly="True" MouseDoubleClick="DataGrid_MouseDoubleClick">
+        <DataGrid Grid.Row="2" Grid.RowSpan="14" Grid.Column="1" Grid.ColumnSpan="3" ItemsSource="{Binding Pets}" AutoGenerateColumns="False" IsReadOnly="True" MouseDoubleClick="DataGrid_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Personal code" Binding="{Binding PersonalCode}"/>
@@ -53,8 +112,8 @@
                 <DataGridTextColumn Header="Birthday" Binding="{Binding BirthdayString}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Grid.Row="17" Grid.Column="2" x:Name="Refresh" Content="Refresh" Margin="5" Click="Refresh_Click"/>
-        <Button Grid.Row="17" Grid.Column="3" x:Name="CreatePet" Content="Add pet" Margin="5" Click="CreatePet_Click"/>
+        <Button Grid.Row="16" Grid.Column="2" x:Name="Refresh" Content="Refresh" Margin="5" Click="Refresh_Click"/>
+        <Button Grid.Row="16" Grid.Column="3" x:Name="CreatePet" Content="Add pet" Margin="5" Click="CreatePet_Click"/>
 
         <TextBlock Grid.Row="2" Grid.Column="5" Text="CNP:" VerticalAlignment="Center"/>
         <TextBlock Grid.Row="3" Grid.Column="5" Text="First name:" VerticalAlignment="Center"/>

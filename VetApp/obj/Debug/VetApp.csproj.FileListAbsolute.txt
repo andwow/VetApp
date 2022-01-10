@@ -41,3 +41,6 @@ D:\VetApp\VetApp\VetApp\obj\Debug\Views\MyCart.g.cs
 D:\VetApp\VetApp\VetApp\obj\Debug\Views\MyCart.baml
 D:\VetApp\VetApp\VetApp\obj\Debug\Views\Interventions.g.cs
 D:\VetApp\VetApp\VetApp\obj\Debug\Views\Interventions.baml
+D:\VetApp\VetApp\VetApp\obj\Debug\App.baml
+D:\VetApp\VetApp\VetApp\obj\Debug\Views\InterventionDetails.g.cs
+D:\VetApp\VetApp\VetApp\obj\Debug\Views\InterventionDetails.baml

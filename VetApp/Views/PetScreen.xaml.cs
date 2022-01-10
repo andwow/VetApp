@@ -136,8 +136,15 @@ namespace VetApp.Views
 
         private void MyCart_Click(object sender, RoutedEventArgs e)
         {
-            MyCart myCart = new MyCart(cart);
-            myCart.Show();
+            if (canModify)
+            {
+                MyCart myCart = new MyCart(cart);
+                myCart.Show();
+            }
+            else
+            {
+                MessageBox.Show("Just a vet can see your cart.");
+            }
         }
 
         private void Refresh_Click(object sender, RoutedEventArgs e)
@@ -167,6 +174,31 @@ namespace VetApp.Views
         {
                 Interventions interventions = new Interventions(4, cart, viewModel.CurrentPet.Id, vetId);
                 interventions.Show();
+        }
+
+        private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                if (sender != null)
+                {
+                    DataGrid grid = sender as DataGrid;
+                    if (grid != null && grid.SelectedItems != null && grid.SelectedItems.Count == 1)
+                    {
+                        //This is the code which helps to show the data when the row is double clicked.
+                        DataGridRow dgr = grid.ItemContainerGenerator.ContainerFromItem(grid.SelectedItem) as DataGridRow;
+                        Intervention dr = (Intervention)dgr.Item;
+                        InterventionDetails profile = new InterventionDetails(dr);
+                        profile.Show();
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
     }
 }
