@@ -44,3 +44,5 @@ D:\VetApp\VetApp\VetApp\obj\Debug\Views\Interventions.baml
 D:\VetApp\VetApp\VetApp\obj\Debug\App.baml
 D:\VetApp\VetApp\VetApp\obj\Debug\Views\InterventionDetails.g.cs
 D:\VetApp\VetApp\VetApp\obj\Debug\Views\InterventionDetails.baml
+D:\VetApp\VetApp\VetApp\obj\Debug\Views\AllSales.g.cs
+D:\VetApp\VetApp\VetApp\obj\Debug\Views\AllSales.baml

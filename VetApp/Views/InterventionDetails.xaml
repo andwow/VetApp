@@ -56,6 +56,7 @@
                 <DataGridTextColumn Header="Type" Binding="{Binding Type}" />
                 <DataGridTextColumn Header="Price" Binding="{Binding Price}" />
                 <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" />
+                <DataGridTextColumn Header="Total price" Binding="{Binding TotalPriceStr}" />
             </DataGrid.Columns>
         </DataGrid>
         <TextBlock Grid.Row="6" Grid.Column="1" Text="Price: " HorizontalAlignment="Right" VerticalAlignment="Center"/>

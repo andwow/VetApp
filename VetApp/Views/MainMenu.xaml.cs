@@ -55,6 +55,13 @@ namespace VetApp.Views
             clients.Show();
         }
 
+        private void AllSales_Click(object sender, RoutedEventArgs e)
+        {
+            AllSales allSales = new AllSales();
+            allSales.Show();
+        }
+
         int vetId;
+
     }
 }

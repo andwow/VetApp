@@ -92,6 +92,13 @@ namespace VetApp.Models
                 NotifyPropertyChanged(nameof(InterventionId));
             }
         }
+        public string TotalPriceStr
+        {
+            get
+            {
+                return (Quantity * Price).ToString();
+            }
+        }
         int id;
         string name;
         int type;

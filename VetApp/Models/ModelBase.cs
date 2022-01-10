@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace VetApp.Models
 {
-    public class ModelBase
+    public class ModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected void NotifyPropertyChanged(string propertyName)
