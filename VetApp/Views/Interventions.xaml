@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="Interventions" Height="450" Width="800" Background="LightSkyBlue" WindowState="Maximized">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="../Images/bg1.jpg"/>
+        </Grid.Background>       
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="3*" />
